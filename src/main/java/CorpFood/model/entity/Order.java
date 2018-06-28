@@ -10,16 +10,15 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Set<Restaurant> restaurants = new HashSet<>();
-    private Set<Meal> meals = new HashSet<>();
+    private String restaurant;
+    private String meal;
 
     public Order() {
     }
 
-    public Order(Long id, Set<Restaurant> restaurants, Set<Meal> meals) {
-        this.id = id;
-        this.restaurants = restaurants;
-        this.meals = meals;
+    public Order(String restaurant, String meal) {
+        this.restaurant = restaurant;
+        this.meal = meal;
     }
 
     public Long getId() {
@@ -30,19 +29,20 @@ public class Order {
         this.id = id;
     }
 
-    public Set<Restaurant> getRestaurants() {
-        return restaurants;
+    public String getRestaurant() {
+        return restaurant;
     }
 
-    public void setRestaurants(Set<Restaurant> restaurants) {
-        this.restaurants = restaurants;
+    public void setRestaurant(String restaurant) {
+        this.restaurant = restaurant;
     }
 
-    public Set<Meal> getMeals() {
-        return meals;
+    public String getMeal() {
+        return meal;
     }
 
-    public void setMeals(Set<Meal> meals) {
-        this.meals = meals;
+    public void setMeal(String meal) {
+        this.meal = meal;
     }
+    
 }
