@@ -4,7 +4,7 @@ package CorpFood.model.service.impl;
 import CorpFood.model.dto.CreateUserDto;
 import CorpFood.model.entity.User;
 import CorpFood.model.repository.UserRepository;
-import CorpFood.model.service.userService;
+import CorpFood.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +12,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class userServiceImpl implements userService {
+public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
 
     @Autowired
-    public userServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

@@ -5,7 +5,7 @@ import CorpFood.model.entity.User;
 
 import java.util.Set;
 
-public interface userService {
+public interface UserService {
 
     User findOneById(Long id);
     Set<User> findAll();
