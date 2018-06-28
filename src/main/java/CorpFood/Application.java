@@ -25,7 +25,7 @@ public class Application {
                 .groupName("Welcome to CorpFood Inc. Swagger!")
                 .apiInfo(apiInfo())
                 .select()
-                .paths(regex("/api.*"))
+                .paths(regex("/corpFood.*"))
                 .build();
     }
 

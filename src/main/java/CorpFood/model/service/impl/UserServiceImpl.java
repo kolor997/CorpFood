@@ -12,12 +12,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class userServiceImpl implements userService {
+public class UserServiceImpl implements userService {
 
     private UserRepository userRepository;
 
     @Autowired
-    public userServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
