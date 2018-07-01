@@ -12,6 +12,7 @@ public interface UserResponseService {
 
     Set<UserResponse> findAll();
 
-
     UserResponse createUserResponse(CreateUserResponseDTO createUserResponseDTO);
+
+    void deleteUserResponse(Long id);
 }

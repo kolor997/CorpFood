@@ -7,9 +7,8 @@ public class CreateUserResponseDTO {
     private String yourOrder;
     private BigDecimal price;
 
-    public CreateUserResponseDTO(){
+    public CreateUserResponseDTO() {
     }
-
 
     public String getYourOrder() {
         return yourOrder;

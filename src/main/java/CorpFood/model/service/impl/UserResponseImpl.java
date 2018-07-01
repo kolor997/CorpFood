@@ -3,7 +3,9 @@ package CorpFood.model.service.impl;
 
 import CorpFood.model.dto.CreateUserResponseDTO;
 import CorpFood.model.dto.UserResponseDTO;
+import CorpFood.model.entity.User;
 import CorpFood.model.entity.UserResponse;
+import CorpFood.model.repository.UserRepository;
 import CorpFood.model.repository.UserResponseRepository;
 import CorpFood.model.service.UserResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +15,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-public class UserResponseImpl  implements UserResponseService{
+public class UserResponseImpl implements UserResponseService {
 
     private UserResponseRepository userResponseRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public UserResponseImpl(UserResponseRepository userResponseRepository){
+    public UserResponseImpl(UserResponseRepository userResponseRepository, UserRepository userRepository) {
         this.userResponseRepository = userResponseRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -33,15 +37,20 @@ public class UserResponseImpl  implements UserResponseService{
     }
 
 
-
     @Override
     public UserResponse createUserResponse(CreateUserResponseDTO createUserResponseDTO) {
+        User user = userRepository.findOne(1L); //wybieranie po ID do skończenia, po SpringSecurity
         UserResponse userResponse = new UserResponse();
 
+        userResponse.setUser(user);
         userResponse.setYourOrder(createUserResponseDTO.getYourOrder());
         userResponse.setPrice(createUserResponseDTO.getPrice());
         return userResponseRepository.save(userResponse);
     }
 
+    @Override
+    public void deleteUserResponse(Long id) {
+        userResponseRepository.delete(id);
+    }
 
 }

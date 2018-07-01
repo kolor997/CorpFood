@@ -1,10 +1,8 @@
 package CorpFood.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 public class UserResponse {
@@ -15,13 +13,24 @@ public class UserResponse {
     private String yourOrder;
     private BigDecimal price;
 
-    public UserResponse(){
+    @OneToOne
+    private User user;
 
+    public UserResponse() {
     }
 
-    public UserResponse(String yourOrder, BigDecimal price) {
+    public UserResponse(User user, String yourOrder, BigDecimal price) {
+        this.user = user;
         this.yourOrder = yourOrder;
         this.price = price;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {

@@ -1,7 +1,6 @@
 package CorpFood.model.dto;
 
 public class CreateUserDto {
-    private Long id;
     private String firstName;
     private String lastName;
     private String login;

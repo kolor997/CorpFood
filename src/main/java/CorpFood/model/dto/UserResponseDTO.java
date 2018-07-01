@@ -1,5 +1,6 @@
 package CorpFood.model.dto;
 
+import CorpFood.model.entity.User;
 import CorpFood.model.entity.UserResponse;
 
 import java.math.BigDecimal;
@@ -7,11 +8,13 @@ import java.math.BigDecimal;
 public class UserResponseDTO {
 
     private Long id;
+    private User user;
     private String yourOrder;
     private BigDecimal price;
 
     public UserResponseDTO(UserResponse userResponse){
         this.id = userResponse.getId();
+        this.user = userResponse.getUser();
         this.yourOrder = userResponse.getYourOrder();
         this.price = userResponse.getPrice();
     }
