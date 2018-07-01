@@ -39,6 +39,4 @@ public class UserServiceImpl implements UserService {
         user.setPassword(createUserDto.getPassword());
         return userRepository.save(user);
     }
-
-
 }

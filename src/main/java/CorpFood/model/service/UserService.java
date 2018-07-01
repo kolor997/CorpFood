@@ -2,6 +2,7 @@ package CorpFood.model.service;
 
 import CorpFood.model.dto.CreateUserDto;
 import CorpFood.model.entity.User;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
