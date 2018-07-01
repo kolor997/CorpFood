@@ -20,6 +20,8 @@ public class EmailSenderImpl implements EmailSender{
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mail, true);
             helper.setTo(to);
+            helper.setReplyTo("corpfoodinc@gmail.com");
+            helper.setFrom("corpfoodinc@gmail.com");
             helper.setSubject(title);
             helper.setText(content, true);
 
