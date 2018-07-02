@@ -39,7 +39,8 @@ public class UserController {
 
     @PostMapping
     public UserDto create(@RequestBody CreateUserDto createUser) {
-        return new UserDto(userService.createUser(createUser));
+        User user = userService.createUser(createUser);
+        return new UserDto(user);
     }
 
     @DeleteMapping("/{id}")
