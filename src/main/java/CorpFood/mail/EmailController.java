@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import javax.mail.MessagingException;
+
 
 @RestController
 @RequestMapping(value = "/corpFood/mail")
@@ -24,7 +26,7 @@ public class EmailController {
     }
 
     @PutMapping("/send")
-    public String send() {
+    public String send() throws MessagingException {
         Context context = new Context();
         context.setVariable("header", "New order!");
         context.setVariable("title", "New CorpFood order is ready to go!");

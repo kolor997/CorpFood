@@ -1,6 +1,7 @@
 package CorpFood.model.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,6 +13,9 @@ public class Offer {
     private String restaurant;
     private String URL;
     private String description;
+
+    @OneToMany(mappedBy = "offer")
+    private Set<UserResponse> userResponses;
 
     public Offer() {
     }
@@ -52,5 +56,13 @@ public class Offer {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<UserResponse> getUserResponses() {
+        return userResponses;
+    }
+
+    public void setUserResponses(Set<UserResponse> userResponses) {
+        this.userResponses = userResponses;
     }
 }

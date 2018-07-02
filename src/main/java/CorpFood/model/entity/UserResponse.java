@@ -16,6 +16,9 @@ public class UserResponse {
     @OneToOne
     private User user;
 
+    @ManyToOne
+    private Offer offer;
+
     public UserResponse() {
     }
 
@@ -55,5 +58,13 @@ public class UserResponse {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
     }
 }

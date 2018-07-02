@@ -1,6 +1,9 @@
 package CorpFood.model.dto;
 
 import CorpFood.model.entity.Offer;
+import CorpFood.model.entity.UserResponse;
+
+import java.util.Set;
 
 public class OfferDTO {
 
@@ -8,12 +11,14 @@ public class OfferDTO {
     private String restaurant;
     private String URL;
     private String description;
+    private Set<UserResponse> userResponses;
 
     public OfferDTO(Offer offer) {
         this.id = offer.getId();
         this.restaurant = offer.getRestaurant();
         this.URL = offer.getURL();
         this.description = offer.getDescription();
+        this.userResponses = offer.getUserResponses();
     }
 
     public Long getId() {

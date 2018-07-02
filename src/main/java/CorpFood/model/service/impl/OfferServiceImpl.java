@@ -3,6 +3,7 @@ package CorpFood.model.service.impl;
 import CorpFood.model.dto.CreateOfferDTO;
 import CorpFood.model.dto.OfferDTO;
 import CorpFood.model.entity.Offer;
+import CorpFood.model.entity.UserResponse;
 import CorpFood.model.repository.OfferRepository;
 import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
