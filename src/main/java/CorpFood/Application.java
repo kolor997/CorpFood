@@ -18,7 +18,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @EntityScan(basePackageClasses = {Application.class, Jsr310JpaConverters.class})
 public class Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception {
         SpringApplication.run(Application.class, args);
     }
 

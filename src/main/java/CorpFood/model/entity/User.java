@@ -19,10 +19,11 @@ public class User {
 
     public User(){}
 
-    public User(String firstName, String lastName, String login) {
+    public User(String firstName, String lastName, String login,String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.login = login;
+        this.password =password;
     }
 
     public String getFirstName() {
