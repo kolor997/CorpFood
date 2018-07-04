@@ -19,8 +19,6 @@ import java.nio.file.AccessDeniedException;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.
@@ -34,8 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "home", "/about", "/user/**").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/signup", "/css/*", "/img/*").permitAll()
+                .antMatchers("/admin/*").hasAnyRole("ADMIN")
                 .anyRequest().authenticated();
 
         httpSecurity.formLogin()
@@ -43,22 +41,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler((request, response, exception) -> response.sendError(HttpStatus.BAD_REQUEST.value(), "Username or password invalid"))
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/api/users/me").permitAll();
+                .defaultSuccessUrl("/welcome").permitAll();
         httpSecurity
                 .logout()
                 .invalidateHttpSession(true)
                 .permitAll()
                 .logoutUrl("/api/logout")
-                .logoutSuccessUrl("/");
+                .logoutSuccessUrl("/login");
     }
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth)throws Exception{
-//
-//        auth.inMemoryAuthentication()
-//                .withUser("user").password("password").roles("USER")
-//                .and()
-//                .withUser("admin").password("password").roles("ADMIN");
-//    }
 
     @Bean
     @Override
