@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/FirstPage.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Order</title>
+<!--    <script>
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i
+            }
+            return i;
+        }
+    </script>-->
+</head>
+<body onload="startTime()">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="container">
+                <div class="restaurantWindow">
+                    <h1>RESTAURANT 1</h1>
+
+                    <p><a>MENU</a></p>
+                </div>
+                <div class="restaurantWindow1">
+                    <h1>RESTAURANT 2</h1>
+
+                    <p><a>MENU</a></p>
+                </div>
+                <button onclick="document.getElementById('id01').style.display='block'"
+                        id="orderBtn">Order
+                </button>
+                <div id="logout"><a href="/login"><img th:src="@{/img/exitpic.png}" alt="Logout"/></a></div>
+                <div id="id01" class="modal">
+                    <div class="container1 animate">
+                        <form action="#" method="post">
+                            <label><b>Order: </b></label>
+                            <br/>
+                            <input type="radio" id="radio1" class="order" name="radio"/>
+                            <label for="radio1" class="radioLabel">RESTAURANT 1</label>
+                            <input type="radio" id="radio2" class="order" name="radio"/>
+                            <label for="radio2" class="radioLabel">RESTAURANT 2</label>
+                            <br/>
+                            <input type="text" placeholder="Your order" name="order"/>
+                            <br/>
+                            <label><b>Price :</b></label>
+                            <br/>
+                            <input type="text" placeholder="$ $ $" name="price" id="price"/>
+                            <br/>
+                            <button type="submit" title="Send your order" class="sendBtn">Send</button>
+                            <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                                    class="cancelbtn">Cancel
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script>
+    var modal = document.getElementById('id01');
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>-->
+</body>
+</html>
