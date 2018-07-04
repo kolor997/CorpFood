@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/LoginPage.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Login</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <form th:action="@{/login}" method="post">
+                <div class="imgcontainer">
+                    <img th:src="@{/img/avatar.png}" alt="Avatar" class="avatar" src="../static/img/avatar.png" />
+                </div>
+                <div class="container">
+                    <label><b>Login</b></label>
+                    <br/>
+                    <input type="text" placeholder="Username" name="username" required="required"/>
+                    <br/>
+                    <br/>
+                    <label><b>Password</b></label>
+                    <br/>
+                    <input type="password" placeholder="Password" name="password" required="required"/>
+                    <br/>
+                    <div id="abc">
+                        <button type="submit" class="loginbtn" id="button1">Login</button>
+                        <br/>
+                        <button type="button" class="signbtn" id="button2" onclick="location.href='/signup'">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
