@@ -5,6 +5,7 @@ import CorpFood.model.dto.UserDto;
 import CorpFood.model.entity.User;
 import CorpFood.model.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public UserDto findById(Long id){
+
         User user = userService.findOneById(id);
         return new UserDto(user);
     }

@@ -21,14 +21,23 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    @Override
-    public User findOneById(Long id){return userRepository.getOne(id);}
+    public UserServiceImpl() {
+    }
 
     @Override
-    public Set<User> findAll() {return new HashSet<>(userRepository.findAll());}
+    public User findOneById(Long id){
+        return userRepository.getOne(id);
+    }
 
     @Override
-    public void deleteUser(Long id) {userRepository.delete(id);}
+    public Set<User> findAll() {
+        return new HashSet<>(userRepository.findAll());
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.delete(id);
+    }
 
     @Override
     public User createUser(CreateUserDto createUserDto) {

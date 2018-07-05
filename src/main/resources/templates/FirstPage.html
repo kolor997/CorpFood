@@ -7,23 +7,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Order</title>
-<!--    <script>
-        function checkTime(i) {
-            if (i < 10) {
-                i = "0" + i
-            }
-            return i;
-        }
-    </script>-->
 </head>
 <body onload="startTime()">
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
+
+            <div id="loginHeader">
+                <p id="header" th:text="${userHeader}"></p>
+            </div>
             <div class="container">
                 <div class="restaurantWindow">
                     <h1>RESTAURANT 1</h1>
-
+                    <h1></h1>
                     <p><a>MENU</a></p>
                 </div>
                 <div class="restaurantWindow1">
@@ -34,10 +30,10 @@
                 <button onclick="document.getElementById('id01').style.display='block'"
                         id="orderBtn">Order
                 </button>
-                <div id="logout"><a href="/login"><img th:src="@{/img/exitpic.png}" alt="Logout"/></a></div>
+                <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/exitpic.png}" alt="Logout"/></a></div>
                 <div id="id01" class="modal">
                     <div class="container1 animate">
-                        <form action="#" method="post">
+                        <form autocomplete="off" action="#" th:action="@{/welcome}" th:object="${userR}" method="post" class="m-t" role="form" data-toggle="validator">
                             <label><b>Order: </b></label>
                             <br/>
                             <input type="radio" id="radio1" class="order" name="radio"/>
@@ -45,11 +41,11 @@
                             <input type="radio" id="radio2" class="order" name="radio"/>
                             <label for="radio2" class="radioLabel">RESTAURANT 2</label>
                             <br/>
-                            <input type="text" placeholder="Your order" name="order"/>
+                            <input type="text" th:field="*{yourOrder}" placeholder="Your order" name="order"/>
                             <br/>
                             <label><b>Price :</b></label>
                             <br/>
-                            <input type="text" placeholder="$ $ $" name="price" id="price"/>
+                            <input type="text" th:field="*{price}" placeholder="$ $ $" name="price" id="price"/>
                             <br/>
                             <button type="submit" title="Send your order" class="sendBtn">Send</button>
                             <button type="button" onclick="document.getElementById('id01').style.display='none'"

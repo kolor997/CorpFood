@@ -30,6 +30,27 @@ button:hover {
     opacity: 0.8;
 }
 
+#loginHeader {
+    margin-top: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    position: center;
+    border: 3px solid #4CAF50;
+    border-radius: 20px 15px;
+    background-color: #f9f9f9;
+    opacity: 0.98;
+    width: 400px;
+    height: 50px;
+}
+
+#header {
+    font-family: "Fira Code",serif  ;
+    font-size: 30px;
+    text-align: center;
+    color: #af194a;
+    margin-top: 0;
+}
+
 .container {
     padding: 16px;
     margin-top: 5%;
@@ -180,9 +201,6 @@ a:hover {
     text-decoration: none;
 }
 
-
-
-
 input[type=radio] {
     display: inline;
 }
@@ -201,7 +219,7 @@ input[type=radio] {
     float: right;
 }
 
-#link{
+#link {
     color: white;
     font-size: 1px;
 }

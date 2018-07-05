@@ -12,4 +12,5 @@ public interface UserService {
     Set<User> findAll();
     void deleteUser(Long id);
     User createUser(CreateUserDto createUserDto);
+
 }
