@@ -1,10 +1,16 @@
 package CorpFood.model.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Offer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -12,6 +18,10 @@ public class Offer {
     private String restaurant;
     private String URL;
     private String description;
+    private LocalDateTime creationTime = LocalDateTime.now();
+
+    @OneToMany(mappedBy = "offer")
+    private Set<UserResponse> userResponses;
 
     public Offer() {
     }
@@ -20,6 +30,7 @@ public class Offer {
         this.restaurant = restaurant;
         this.URL = URL;
         this.description = description;
+        this.creationTime = getCreationTime();
     }
 
     public Long getId() {
@@ -52,5 +63,17 @@ public class Offer {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<UserResponse> getUserResponses() {
+        return userResponses;
+    }
+
+    public void setUserResponses(Set<UserResponse> userResponses) {
+        this.userResponses = userResponses;
+    }
+
+    public LocalDateTime getCreationTime() {
+        return creationTime;
     }
 }

@@ -1,12 +1,14 @@
 package CorpFood.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
 
 @Service
 public class EmailSenderImpl implements EmailSender{
@@ -14,21 +16,17 @@ public class EmailSenderImpl implements EmailSender{
     @Autowired
     private JavaMailSender javaMailSender;
 
-    @Override
-    public void sendEmail(String to, String title, String content) {
-        MimeMessage mail = javaMailSender.createMimeMessage();
-        try {
-            MimeMessageHelper helper = new MimeMessageHelper(mail, true);
-            helper.setTo(to);
-            helper.setReplyTo("corpfoodinc@gmail.com");
-            helper.setFrom("corpfoodinc@gmail.com");
-            helper.setSubject(title);
-            helper.setText(content, true);
+    public void sendEmail(
+            String to, String subject, String text) throws MessagingException {
 
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+        MimeMessage message = javaMailSender.createMimeMessage();
 
-        javaMailSender.send(mail);
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(text, true);
+
+        javaMailSender.send(message);
     }
 }

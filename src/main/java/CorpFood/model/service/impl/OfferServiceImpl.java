@@ -2,13 +2,19 @@ package CorpFood.model.service.impl;
 
 import CorpFood.model.dto.CreateOfferDTO;
 import CorpFood.model.dto.OfferDTO;
+import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Offer;
+import CorpFood.model.entity.UserResponse;
 import CorpFood.model.repository.OfferRepository;
+import CorpFood.model.repository.UserRepository;
+import CorpFood.model.repository.UserResponseRepository;
 import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service

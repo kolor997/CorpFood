@@ -22,6 +22,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
+
     @Bean
     public Docket corpFoodApi() {
         return new Docket(DocumentationType.SWAGGER_2)

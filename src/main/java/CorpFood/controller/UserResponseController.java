@@ -10,6 +10,8 @@ import CorpFood.model.service.UserResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Null;
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +32,7 @@ public class UserResponseController {
         return new UserResponseDTO(userResponse);
     }
 
-    @GetMapping
+    @GetMapping("/")
     public Set<UserResponseDTO> findAll() {
         Set<UserResponseDTO> result = new HashSet<>();
 
@@ -50,4 +52,16 @@ public class UserResponseController {
         userResponseService.deleteUserResponse(id);
     }
 
+    @GetMapping("/prices")
+    public BigDecimal getAllPrices(UserResponseDTO urdto) {
+
+        Set<BigDecimal> temp = new HashSet<>();
+
+        Set<UserResponse> all = userResponseService.findAll();
+
+        all.forEach(p-> temp.add(urdto.getPrice()));
+
+        return temp.stream()
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 }
