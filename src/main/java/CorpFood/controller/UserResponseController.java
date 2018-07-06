@@ -52,16 +52,5 @@ public class UserResponseController {
         userResponseService.deleteUserResponse(id);
     }
 
-    @GetMapping("/prices")
-    public BigDecimal getAllPrices(UserResponseDTO urdto) {
 
-        Set<BigDecimal> temp = new HashSet<>();
-
-        Set<UserResponse> all = userResponseService.findAll();
-
-        all.forEach(p-> temp.add(urdto.getPrice()));
-
-        return temp.stream()
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
 }

@@ -14,14 +14,12 @@ public class OfferDTO {
     private String URL;
     private String description;
     private LocalDateTime creationTime;
-    private Set<UserResponse> userResponses;
 
     public OfferDTO(Offer offer) {
         this.id = offer.getId();
         this.restaurant = offer.getRestaurant();
         this.URL = offer.getURL();
         this.description = offer.getDescription();
-        this.userResponses = offer.getUserResponses();
         this.creationTime = offer.getCreationTime();
     }
 

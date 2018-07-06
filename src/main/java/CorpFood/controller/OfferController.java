@@ -41,7 +41,6 @@ public class OfferController {
 
     @PostMapping
     public OfferDTO create(@RequestBody CreateOfferDTO createOfferDTO) {
-//        Offer offer = offerService.createOffer(createOfferDTO);
         return new OfferDTO(offerService.createOffer(createOfferDTO));
     }
 

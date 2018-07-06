@@ -9,17 +9,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class SecurityController {
 
     @GetMapping("/")
-    public String home1(){
+    public String home1() {
         return "home";
     }
+
     @GetMapping("/home")
-    public String home(){
+    public String home() {
         return "home";
     }
+
     @GetMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin";
     }
+
     @GetMapping("/user")
     public String user() {
         return "user";
