@@ -30,7 +30,8 @@
                 <button onclick="document.getElementById('id01').style.display='block'"
                         id="orderBtn">Order
                 </button>
-                <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/exitpic.png}" alt="Logout"/></a></div>
+                <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin"/></a></div>
+                <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/logout.png}" alt="Logout"/></a></div>
                 <div id="id01" class="modal">
                     <div class="container1 animate">
                         <form autocomplete="off" action="#" th:action="@{/welcome}" th:object="${userR}" method="post" class="m-t" role="form" data-toggle="validator">
@@ -58,13 +59,5 @@
         </div>
     </div>
 </div>
-<!--<script>
-    var modal = document.getElementById('id01');
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-</script>-->
 </body>
 </html>

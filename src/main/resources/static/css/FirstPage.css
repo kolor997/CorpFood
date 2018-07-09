@@ -215,11 +215,11 @@ input[type=radio] {
 }
 
 #logout {
-    margin-top: 315px;
+    margin-top: 305px;
     float: right;
 }
 
-#link {
-    color: white;
-    font-size: 1px;
+#admin{
+    margin-top: 305px;
+    float: left;
 }

@@ -20,9 +20,6 @@ public class Offer {
     private String description;
     private LocalDateTime creationTime = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "offer")
-    private Set<UserResponse> userResponses;
-
     public Offer() {
     }
 
@@ -63,14 +60,6 @@ public class Offer {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Set<UserResponse> getUserResponses() {
-        return userResponses;
-    }
-
-    public void setUserResponses(Set<UserResponse> userResponses) {
-        this.userResponses = userResponses;
     }
 
     public LocalDateTime getCreationTime() {

@@ -9,6 +9,7 @@ import CorpFood.model.repository.UserRepository;
 import CorpFood.model.repository.UserResponseRepository;
 import CorpFood.model.service.UserResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -39,9 +40,9 @@ public class UserResponseImpl implements UserResponseService {
 
     @Override
     public UserResponse createUserResponse(CreateUserResponseDTO createUserResponseDTO) {
-        User user = userRepository.findOne(1L); //wybieranie po ID do skończenia, po SpringSecurity
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userRepository.findOneByLogin(username);
         UserResponse userResponse = new UserResponse();
-
         userResponse.setUser(user);
         userResponse.setYourOrder(createUserResponseDTO.getYourOrder());
         userResponse.setPrice(createUserResponseDTO.getPrice());

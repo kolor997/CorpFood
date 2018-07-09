@@ -8,9 +8,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Admin</title>
-    <style>
-
-    </style>
 </head>
 <body>
 <div class="container-fluid">
@@ -19,18 +16,67 @@
             <div id="nameContainer"><h1>ADMIN PAGE</h1></div>
             <div class="container">
                 <div id="upper_menu">
-                    <ul id="main_um" class="first_floor">
-                        <li><a href="#"><img  th:src="@{/img/plus.png}" title="add new offer"/><br/><label>Add new offer</label></a></li>
-                        <li><a href="#"><img th:src="@{/img/list1.png}" title="list"/><br/><label>Live list</label></a>
+                    <ul id="main_um">
+                        <li><a href="#"><img th:src="@{/img/add.png}" title="add new offer"/> </a>
+                            <ul class="second_floor animate">
+                                <li>
+                                    <form action="...">
+                                        <label><b>Restaurant: </b></label>
+                                        <br/>
+                                        <input type="text" placeholder="Restaurant" name="restaurant"
+                                               required="required"/>
+                                        <br/>
+                                        <br/>
+                                        <label><b>Description: </b></label>
+                                        <br/>
+                                        <input type="text" placeholder="Say something about that restaurant" name="psw"
+                                               required="required"/>
+                                        <br/>
+                                        <br/>
+                                        <label><b>URL: </b></label>
+                                        <br/>
+                                        <input type="text" placeholder="url" name="psw" required="required"/>
+                                        <div class="button">
+                                            <button type="submit" class="addNew" id="button2">Add</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
-                        <li><a href="#"><img th:src="@{/img/dolar.png}" title="money"/><br/><label>Payment</label></a>
+                        <li><a href="#"><img th:src="@{/img/list.png}" title="list"/></a></li>
+                        <li><a href="#"><img  th:src="@{/img/money1.png}" title="money"/></a>
                         </li>
-                        <li><a href="#"><img th:src="@{/img/ban1.png}" title="Business news"/><br/><label>Ban
-                            someone</label></a>
+                        <li><a href="#"><img th:src="@{/img/ban.png}" title="Business news"/></a>
+                            <ul class="second_floor animate" id="ban">
+                                <li>
+                                    <ul id="banList">
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Matilde Guttierrez</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Lucilla Bozell</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Andres Luckett</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Louise Danielson</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Elinor Ritenour</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Bong Bublitzv</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Magali Goree</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Solange Rosamond</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Tynisha Halsted</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Pablo Parsonv</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Julian Lokken</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Beulah Willems</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Lena Sedlak</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Mariah Devitt</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Anglea Canon</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Elsa Wilburn</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Mariam Poisson</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Orville Lauderdale</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Shanita Rieck</li>
+                                        <li><input type="radio" class="order" name="radio" title="ban"/> Bridgette Bornstein</li>
+                                        <li><button>BAN</button></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </div>
