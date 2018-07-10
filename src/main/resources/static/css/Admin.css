@@ -10,36 +10,37 @@ button:hover {
 }
 
 #nameContainer {
-    margin-top: 3%;
+    margin-top: 1%;
     margin-right: auto;
     margin-left: auto;
     position: center;
-    border: 3px solid #4CAF50;
+    border: 3px solid #af194a;
     border-radius: 20px 15px;
     background-color: #f9f9f9;
     opacity: 0.98;
-    width: 750px;
-    height: 125px;
+    width: 350px;
+    height: 55px;
 }
 
 h1 {
-    font-size: 65px;
+    font-size: 45px;
+    margin: auto;
     font-weight: bolder;
     text-align: center;
     font-family: "Eras Medium ITC", serif;
 }
 
 .container {
-    margin-top: 3%;
+    margin-top: 2%;
     margin-right: auto;
     margin-left: auto;
     position: center;
-    border: 3px solid #4CAF50;
+    border: 3px solid #af194a;
     border-radius: 20px 15px;
     background-color: #f9f9f9;
     opacity: 0.98;
     width: 800px;
-    height: 150px;
+    height: 700px;
 }
 
 a {
@@ -53,6 +54,8 @@ a:hover {
 
 #upper_menu {
     display: inline-table;
+    border-radius: 20px;
+    border-bottom: #af194a 3px ridge;
 }
 
 #main_um li {
@@ -79,10 +82,9 @@ label {
 /*//////////////////*/
 
 .second_floor {
-    margin-top: 125px;
+    margin-top: 155px;
     display: none;
     position: absolute;
-    /* background-color: #53C4DA;*/
     background-color: #6F7B8C;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
     padding: 5px 5px;
@@ -176,5 +178,9 @@ button {
     margin-top: 15px;
     border-radius: 4px;
     outline: none;
+}
 
+#backButt{
+    margin-top: 465px;
+    float: left;
 }
