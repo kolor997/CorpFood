@@ -79,7 +79,7 @@ label {
 /*//////////////////*/
 
 .second_floor {
-    margin-top: 115px;
+    margin-top: 125px;
     display: none;
     position: absolute;
     /* background-color: #53C4DA;*/
@@ -100,7 +100,8 @@ label {
 #main_um li:hover #ban {
     display: block;
     width: 200px;
-    height: 500px;
+    height: auto;
+    max-height: 500px;
     border-radius: 15px 15px;
 }
 
@@ -131,8 +132,11 @@ label {
     padding: 2px;
     line-height:2px;
 }
-
-#banList button{
+#banList li{
+    float: left;
+    clear: left;
+}
+#banButton{
     background-color: crimson;
     color: white;
     padding: 14px 20px;
@@ -148,6 +152,8 @@ label {
 #banList button:hover {
     opacity: 0.8;
 }
+
+
 /*adding new restaurant*/
 input[type=text] {
     width: 460px;

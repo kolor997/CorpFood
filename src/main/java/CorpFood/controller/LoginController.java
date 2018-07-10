@@ -9,7 +9,6 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(ModelMap modelMap) {
-        modelMap.put("one", "Finally working!!!!!!");
         return "LoginPage";
     }
 }
