@@ -8,12 +8,14 @@ public class UserDto {
     private String login;
     private String firstName;
     private String lastName;
+    private String role;
 
     public UserDto(User user) {
         this.id = user.getId();
         this.login = user.getLogin();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
+        this.role = user.getRole();
     }
 
     public Long getId() {
