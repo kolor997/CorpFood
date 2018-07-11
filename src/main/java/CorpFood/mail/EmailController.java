@@ -19,15 +19,15 @@ public class EmailController {
     private final EmailSender emailSender;
     private final TemplateEngine templateEngine;
     private final UserResponseService userResponseService;
-    private final ContentServiceImpl csImpl;
+    private final ContentServiceImpl contentService;
 
     @Autowired
     public EmailController(EmailSender emailSender,
-                           TemplateEngine templateEngine, UserResponseService userResponseService, ContentServiceImpl csImpl){
+                           TemplateEngine templateEngine, UserResponseService userResponseService, ContentServiceImpl contentService){
         this.emailSender = emailSender;
         this.templateEngine = templateEngine;
         this.userResponseService = userResponseService;
-        this.csImpl = csImpl;
+        this.contentService = contentService;
     }
 
     @PutMapping("/send")
@@ -36,30 +36,13 @@ public class EmailController {
         Context context = new Context();
         context.setVariable("header", "");
         context.setVariable("title", "New CorpFood order is ready to go!");
-        context.setVariable("description",csImpl.getAllFoodOrder());
-//        context.setVariable("description",csImpl.getAllPrices());
+//        context.setVariable("responses", userResponseService.listAllUserResponses());
+        context.setVariable("descriptions", contentService.getAllFoodOrder());
+        context.setVariable("price", contentService.getAllPrices());
 
         String body = templateEngine.process("mailTemplate", context);
         emailSender.sendEmail("tt.olech@gmail.com", "CorpFood order is ready to go!", body);
         return "index";
     }
 
-//    public String getAllFoodOrder(){
-//        StringBuilder sb = new StringBuilder();
-//        Set<UserResponseDTO> result = new HashSet<>();
-//
-//        Set<UserResponse> all = userResponseService.findAll();
-//        all.forEach(b -> result.add(new UserResponseDTO(b)));
-//
-//
-//        for (UserResponseDTO udto : result) {
-//            sb.append(udto.getUser().getFirstName() + "\n");
-//            sb.append(udto.getUser().getLastName() + "\n");
-//            sb.append(udto.getYourOrder() + "\n");
-//            sb.append(udto.getPrice().toString() + "\n");
-//            sb.append("\n");
-//        }
-//
-//        return sb.toString();
-//    }
 }

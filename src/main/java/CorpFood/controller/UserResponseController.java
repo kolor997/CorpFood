@@ -52,5 +52,24 @@ public class UserResponseController {
         userResponseService.deleteUserResponse(id);
     }
 
+//    @GetMapping("/listResponses")
+//    public String listResponses(Model model){
+//        List<UserResponse> listedResponses = userResponseService.listAllUserResponses();
+//        model.addAttribute("responses", listedResponses);
+//
+//        return "responses";
+//    }
 
+//    @GetMapping("/prices")
+//    public BigDecimal getAllPrices(UserResponseDTO urdto) {
+//
+//        Set<BigDecimal> temp = new HashSet<>();
+//
+//        Set<UserResponse> all = userResponseService.findAll();
+//
+//        all.forEach(p-> temp.add(urdto.getPrice()));
+//
+//        return temp.stream()
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
+//    }
 }

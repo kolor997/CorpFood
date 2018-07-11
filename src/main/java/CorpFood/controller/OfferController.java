@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -47,5 +49,15 @@ public class OfferController {
     @DeleteMapping("/{id}")
     public void deleteOffer(@PathVariable Long id) {
         offerService.deleteOffer(id);
+    }
+
+    @GetMapping("/")
+    public List<OfferDTO> findActive() {
+        List<OfferDTO> result = new ArrayList<>();
+
+        List<Offer> all = offerService.findActiveOffers();
+        all.forEach(b -> result.add(new OfferDTO(b)));
+
+        return result;
     }
 }

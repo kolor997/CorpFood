@@ -16,16 +16,17 @@ public class UserResponse {
     @OneToOne
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Offer offer;
 
     public UserResponse() {
     }
 
-    public UserResponse(User user, String yourOrder, BigDecimal price) {
+    public UserResponse(User user, String yourOrder, BigDecimal price, Offer offer) {
         this.user = user;
         this.yourOrder = yourOrder;
         this.price = price;
+        this.offer = offer;
     }
 
     public User getUser() {
@@ -59,5 +60,13 @@ public class UserResponse {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public String getYourOrder() {
+        return yourOrder;
+    }
+
+    public void setYourOrder(String yourOrder) {
+        this.yourOrder = yourOrder;
     }
 }

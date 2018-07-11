@@ -1,31 +1,103 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:remove="all">CodeCouple Newsletter</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
 
-    <style type="text/css">
-        h1 {font-size: 26px; color: #444444 !important; font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", sans-serif; line-height: 1.5;}
-        h3 {font-size: 12px; color: #444444 !important; font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", sans-serif;}
-        p {font-size: 16px; color: #ffffff; font-family: "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", sans-serif; line-height: 1.5;}
-        table { border: 1px solid #e4e4e4;}
-        a {color: #062b67; text-decoration: none; font-weight: bold;}
+        body {
+            font-family: "Eras Medium ITC", serif;
+            font-size: 17px;
+        }
+
+        .mainContainer {
+            padding: 30px;
+            background-color: #9c9a9a;
+        }
+
+        #innerOrder {
+            margin-right: auto;
+            margin-left: auto;
+            padding: 4px;
+            position: center;
+            border: 3px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            opacity: 0.98;
+            width: 800px;
+            height: auto;
+        }
+
+        th {
+            border-bottom: 2px #4CAF50 solid;;
+        }
+
+        #sum {
+            font-weight: bolder;
+            font-size: 20px;
+            margin-top: 55px;
+            padding: 10px;
+            margin-left: 60%;
+            position: center;
+            border: 3px solid #4CAF50;
+            border-radius: 5px;
+            background-color: #f1f9ea;
+            opacity: 0.98;
+            width: 150px;
+            height: 25px;
+        }
+
+        h1 {
+            margin-left: 45%;
+        }
+
+        h4 {
+            width: 240px;
+            border-bottom: 2px #2b642e solid;
+            font-weight: bolder;
+        }
+
+        table {
+            width: 98%
+        }
     </style>
 </head>
 <body>
-<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#57bc14">
-    <tr>
-        <td height="50" align="center"><p th:text="${header}">header</p></td>
-    </tr>
-    <tr bgcolor="ffffff">
-        <td height="100" align="center"><h1 th:text="${title}">title</h1></td>
-    </tr>
-    <tr bgcolor="ffffff">
-        <td height="300" align="center"><h3 th:text="${description}">description</h3></td>
-    </tr>
-    <tr>
-        <td height="50" align="center"><p>In Open Space no one can hear your scream.</p></td>
-    </tr>
-</table>
+<div class="col-sm-12 mainContainer">
+
+    <div id="innerOrder">
+        <table>
+            <div>
+            <tr>
+                <td><h1 th:text="${title}"></h1></td>
+            </tr>
+            </div>
+                <tr th:each="offer : ${descriptions}">
+                    <h4>OFFER: <p  th:text="${offer.key.restaurant}"></p></h4>
+                </tr>
+                <tr>
+                    <th>USER</th>
+                    <th>ORDER</th>
+                    <th>PRICE</th>
+                </tr>
+                <div th:each="description : ${descriptions.values()}">
+                    <div th:each = "response : ${description}">
+                        <tr>
+                        <td th:text="${response.user.firstName+' '+response.user.lastName}"></td>
+                        <td th:text="${response.yourOrder}"></td>
+                        <td th:text="${response.price}"></td>
+                        </tr>
+                    </div>
+                </div>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td id="sum">TOTAL PRICE: <p  th:text="${price}"> zł</td>
+                </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>
