@@ -12,6 +12,8 @@ import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -50,4 +52,22 @@ public class OfferServiceImpl implements OfferService {
         offer.setDescription(createOfferDTO.getDescription());
         return offerRepository.save(offer);
     }
+
+    @Override
+    public List<Offer> findActiveOffers() {
+        List<Offer> activeOffers = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime currentDate = LocalDateTime.now();
+        String currentDateFormat = currentDate.format(formatter);
+
+        for (Offer o : offerRepository.findAll()) {
+            if (o.getCreationTime().format(formatter).equals(currentDateFormat)){
+                activeOffers.add(o);
+            }
+
+        }
+
+        return activeOffers;
+    }
+
 }

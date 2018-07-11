@@ -17,4 +17,6 @@ public interface OfferService {
     void deleteOffer(Long id);
 
     Offer createOffer(CreateOfferDTO createUserDto);
+
+    List<Offer> findActiveOffers();
 }

@@ -11,12 +11,14 @@ public class UserResponseDTO {
     private User user;
     private String yourOrder;
     private BigDecimal price;
+    private Long offerID;
 
     public UserResponseDTO(UserResponse userResponse){
         this.id = userResponse.getId();
         this.user = userResponse.getUser();
-        this.yourOrder = userResponse.getYourOrder();
         this.price = userResponse.getPrice();
+        this.yourOrder = userResponse.getYourOrder();
+        this.offerID = userResponse.getOffer().getId();
     }
 
     public String getYourOrder() {
@@ -45,5 +47,9 @@ public class UserResponseDTO {
 
     public User getUser() {
         return user;
+    }
+
+    public Long getOfferID() {
+        return offerID;
     }
 }
