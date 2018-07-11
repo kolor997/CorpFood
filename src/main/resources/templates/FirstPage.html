@@ -12,7 +12,6 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-
             <div id="loginHeader">
                 <p id="header" th:text="${userHeader}"></p>
             </div>
@@ -27,17 +26,29 @@
 
                     <p><a>MENU</a></p>
                 </div>
-                <button onclick="document.getElementById('id01').style.display='block'"
-                        id="orderBtn">Order
-                </button>
-                <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin"/></a></div>
-                <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/logout.png}" alt="Logout"/></a></div>
+                <button onclick="document.getElementById('id01').style.display='block'" id="orderBtn">Order</button>
+                <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin" title="Admin Page"/></a></div>
+                <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/logout.png}" alt="Logout" title="Logout"/></a></div>
+                <div class="mainTable">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Order</th>
+                            <th>Price</th>
+                        </tr>
+                        <tr th:each="response:${responses}">
+                            <td th:text="${response.user.firstName}+' '+${response.user.lastName}">q</td>
+                            <td th:text="${response.yourOrder}">q</td>
+                            <td th:text="${response.price}">q</td>
+                        </tr>
+                    </table>
+                </div>
                 <div id="id01" class="modal">
                     <div class="container1 animate">
                         <form autocomplete="off" action="#" th:action="@{/welcome}" th:object="${userR}" method="post" class="m-t" role="form" data-toggle="validator">
                             <label><b>Order: </b></label>
                             <br/>
-                            <input type="radio" id="radio1" class="order" name="radio"/>
+                            <input type="radio" id="radio1" class="order" name="radio" th />
                             <label for="radio1" class="radioLabel">RESTAURANT 1</label>
                             <input type="radio" id="radio2" class="order" name="radio"/>
                             <label for="radio2" class="radioLabel">RESTAURANT 2</label>

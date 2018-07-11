@@ -50,6 +50,7 @@ a {
 
 a:hover {
     text-decoration: none;
+    opacity: 0.8;
 }
 
 #upper_menu {
@@ -138,23 +139,17 @@ label {
     float: left;
     clear: left;
 }
-#banButton{
+#banButton {
     background-color: crimson;
     color: white;
-    padding: 14px 20px;
+    padding: 7px 10px;
     border: none;
     cursor: pointer;
     width: 150px;
-    margin-top: 15px;
     margin-left: 7px;
     border-radius: 4px;
     outline: none;
-
 }
-#banList button:hover {
-    opacity: 0.8;
-}
-
 
 /*adding new restaurant*/
 input[type=text] {

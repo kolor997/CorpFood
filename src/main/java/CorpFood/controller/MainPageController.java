@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Set;
 
 @Controller
 public class MainPageController {
 
     private UserResponseService userResponseService;
-    private UserRepository userRepository;
+    private UserRepository userRepository; //userService
+
 
 
     @Autowired
@@ -32,6 +34,10 @@ public class MainPageController {
     public ModelAndView showRegistrationPage(ModelAndView modelAndView, UserResponse userResponse) {
         UserDetails userPrincipals = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepository.findOneByLogin(userPrincipals.getUsername());
+
+        Set<UserResponse> response = userResponseService.findAll();
+        modelAndView.addObject("responses",response);
+
         modelAndView.addObject("userHeader", user.getFirstName() + " " + user.getLastName());
         modelAndView.addObject("userR", userResponse);
         modelAndView.setViewName("FirstPage");
@@ -45,6 +51,8 @@ public class MainPageController {
         User user = userRepository.findOneByLogin(userPrincipals.getUsername());
         modelAndView.addObject("userHeader", user.getFirstName() + " " + user.getLastName());
 
+        Set<UserResponse> response = userResponseService.findAll();
+        modelAndView.addObject("responses",response);
         userResponseService.createUserResponse(userRes);
         modelAndView.addObject("userR", new UserResponse());
         modelAndView.setViewName("FirstPage");
