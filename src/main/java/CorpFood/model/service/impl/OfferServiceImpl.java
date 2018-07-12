@@ -14,10 +14,12 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.Comparator.comparing;
 
 @Service
 public class OfferServiceImpl implements OfferService {
@@ -55,19 +57,11 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public List<Offer> findActiveOffers() {
-        List<Offer> activeOffers = new ArrayList<>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDateTime currentDate = LocalDateTime.now();
-        String currentDateFormat = currentDate.format(formatter);
 
-        for (Offer o : offerRepository.findAll()) {
-            if (o.getCreationTime().format(formatter).equals(currentDateFormat)){
-                activeOffers.add(o);
-            }
-
-        }
-
-        return activeOffers;
+        Set<Offer> activeOffers = offerRepository.findAllByCreationTimeAfter(LocalDateTime.now().truncatedTo(ChronoUnit.DAYS));
+        return activeOffers.stream()
+                .sorted(comparing(Offer::getCreationTime))
+                .collect(Collectors.toList());
     }
 
 }

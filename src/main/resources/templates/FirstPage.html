@@ -16,10 +16,10 @@
                 <p id="header" th:text="${userHeader}"></p>
             </div>
             <div class="container">
-                <div class="restaurantWindow">
+                <div class="restaurantWindow" th:each="active:${activeOffers}">
                     <h1>RESTAURANT 1</h1>
                     <h1></h1>
-                    <p><a>MENU</a></p>
+                    <p><a href="th:text="${active.URL}"">MENU</a></p>
                 </div>
                 <div class="restaurantWindow1">
                     <h1>RESTAURANT 2</h1>
@@ -48,7 +48,7 @@
                         <form autocomplete="off" action="#" th:action="@{/welcome}" th:object="${userR}" method="post" class="m-t" role="form" data-toggle="validator">
                             <label><b>Order: </b></label>
                             <br/>
-                            <input type="radio" id="radio1" class="order" name="radio" th />
+                            <input type="radio" id="radio1" class="order" name="radio"/>
                             <label for="radio1" class="radioLabel">RESTAURANT 1</label>
                             <input type="radio" id="radio2" class="order" name="radio"/>
                             <label for="radio2" class="radioLabel">RESTAURANT 2</label>
