@@ -23,6 +23,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public UserDto findById(Long id){
+
         User user = userService.findOneById(id);
         return new UserDto(user);
     }

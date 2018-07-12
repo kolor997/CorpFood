@@ -18,6 +18,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
        if(findByLogin == null){
            throw new UsernameNotFoundException(s);
        }
-        return new UserDetailsImpl(findByLogin.getLogin(),findByLogin.getPassword());
+        return new UserDetailsImpl(findByLogin.getLogin(),findByLogin.getPassword(), findByLogin.getRole());
     }
 }

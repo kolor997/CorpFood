@@ -41,7 +41,6 @@ button {
     height: 50px;
 
 }
-
 #button2 {
     display: inline-block;
     margin-left: 50px;
@@ -58,14 +57,25 @@ button:hover {
 }
 
 form {
-    margin-top: 6%;
+    margin-top: 1%;
     margin-right: auto;
     margin-left: auto;
     position: center;
-    border: 3px solid #4CAF50;
+    border: 3px solid #af194a;
     border-radius: 20px 15px;
     background-color: #f9f9f9;
     opacity: 0.98;
     width: 500px;
     height: 650px;
+}
+#logo{
+    width: 500px;
+}
+#logCon{
+    margin-top: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    position: center;
+    opacity: 0.98;
+    width: 500px;
 }

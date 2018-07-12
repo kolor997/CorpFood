@@ -1,12 +1,10 @@
 package CorpFood.model.entity;
 
-import org.apache.catalina.User;
-
-import javax.persistence.*;
-import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
 
 @Entity
 public class Offer {
@@ -19,9 +17,6 @@ public class Offer {
     private String URL;
     private String description;
     private LocalDateTime creationTime = LocalDateTime.now();
-
-    @OneToMany(mappedBy = "offer")
-    private List<UserResponse> userResponses = new ArrayList<>();
 
     public Offer() {
     }
@@ -67,9 +62,5 @@ public class Offer {
 
     public LocalDateTime getCreationTime() {
         return creationTime;
-    }
-
-    public List<UserResponse> getUserResponses() {
-        return userResponses;
     }
 }

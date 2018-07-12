@@ -1,16 +1,12 @@
 package CorpFood.controller;
 
-import CorpFood.model.dto.CreateOfferDTO;
 import CorpFood.model.dto.CreateUserResponseDTO;
-import CorpFood.model.dto.OfferDTO;
 import CorpFood.model.dto.UserResponseDTO;
-import CorpFood.model.entity.Offer;
 import CorpFood.model.entity.UserResponse;
 import CorpFood.model.service.UserResponseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;

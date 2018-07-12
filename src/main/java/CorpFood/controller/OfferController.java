@@ -6,7 +6,6 @@ import CorpFood.model.dto.OfferDTO;
 import CorpFood.model.entity.Offer;
 import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

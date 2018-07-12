@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" th:href="@{/css/Admin.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Admin</title>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="nameContainer"><h1>ADMIN PAGE</h1></div>
+            <div class="container">
+                <div id="upper_menu">
+                    <ul id="main_um">
+                        <li><a href="#"><img th:src="@{/img/add.png}" title="add new offer"/> </a>
+                            <ul class="second_floor animate">
+                                <li>
+                                    <form autocomplete="off" action="#" th:action="@{/adminPa}" th:object="${offer}" method="post">
+                                        <label><b>Restaurant: </b></label>
+                                        <br/>
+                                        <input type="text" th:field="*{restaurant}" placeholder="Restaurant" name="restaurant" required="required"/>
+                                        <br/>
+                                        <br/>
+                                        <label><b>Description: </b></label>
+                                        <br/>
+                                        <input type="text" th:field="*{description}" placeholder="Say something about that restaurant" name="des" required="required"/>
+                                        <br/>
+                                        <br/>
+                                        <label><b>URL: </b></label>
+                                        <br/>
+                                        <input type="text" th:field="*{URL}" placeholder="url" name="url" required="required"/>
+                                        <div class="button">
+                                            <button type="submit" class="addNew" id="button2">Add</button>
+                                        </div>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><img th:src="@{/img/list.png}" title="list"/></a></li>
+                        <li><a href="#"><img th:src="@{/img/money1.png}" title="money"/></a></li>
+                        <li><a href="#"><img th:src="@{/img/ban.png}" title="Ban"/></a>
+                            <ul class="second_floor animate" id="ban">
+                                <li>
+                                    <ul id="banList" th:each="users:${users}">
+                                        <li><input type="radio" class="order" name="radio" title="ban" th:text="' '+${users.firstName}+' '+${users.lastName}"/></li>
+                                    </ul>
+                                    <button id="banButton" type="submit">DELETE</button>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="logoCont"><img th:src="@{/img/logoCF.png}" id="logo"/></div>
+                <div id="backButt"><a href="/welcome"><img th:src="@{/img/back.png}"/></a></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
