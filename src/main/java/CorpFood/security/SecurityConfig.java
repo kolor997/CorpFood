@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.formLogin()
                 .loginPage("/login")
-                .failureHandler((request, response, exception) -> response.sendError(HttpStatus.BAD_REQUEST.value(), "Username or password invalid"))
+                .failureUrl("/login-error")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/welcome").permitAll();
