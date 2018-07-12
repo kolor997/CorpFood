@@ -2,12 +2,10 @@ package CorpFood.model.service.impl;
 
 import CorpFood.model.dto.CreateContentDTO;
 import CorpFood.model.dto.OfferDTO;
-import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Content;
 import CorpFood.model.entity.Offer;
 import CorpFood.model.entity.UserResponse;
 import CorpFood.model.repository.ContentRepository;
-import CorpFood.model.repository.UserResponseRepository;
 import CorpFood.model.service.ContentService;
 import CorpFood.model.service.OfferService;
 import CorpFood.model.service.UserResponseService;
@@ -58,17 +56,23 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public Map<OfferDTO, Set<UserResponseDTO>> getAllFoodOrder() {
-        Map<OfferDTO, Set<UserResponseDTO>> result = new HashMap<>();
+    public Map<OfferDTO, Set<UserResponse>> getAllFoodOrder() {
+        Map<OfferDTO, Set<UserResponse>> result = new HashMap<>();
         Set<OfferDTO> listedOfferDTO = new HashSet<>();
-        Set<UserResponseDTO> userResponseDTOS = new HashSet<>();
+//        Set<UserResponseDTO> userResponseDTOS = new HashSet<>();
         List<Offer> listedOffers = offerService.findActiveOffers();
 
-        listedOffers.stream().forEach(o -> listedOfferDTO.add(new OfferDTO(o)));
+        listedOffers.stream()
+                .forEach(o -> listedOfferDTO
+                        .add(new OfferDTO(o)));
 
-        listedOfferDTO.stream().forEach(o -> userResponseDTOS.add(new UserResponseDTO(o.getUserResponses().iterator().next())));
+//        listedOfferDTO.stream()
+//                .forEach(o -> userResponseDTOS
+//                        .add(new UserResponseDTO(o.getUserResponses()
+//                                .iterator()
+//                                .next())));
 
-        listedOfferDTO.stream().forEachOrdered(o -> result.put(o, userResponseDTOS));
+        listedOfferDTO.stream().forEachOrdered(o -> result.put(o, o.getUserResponses()));
 
         return result;
 
