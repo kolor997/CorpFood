@@ -20,6 +20,11 @@
                 <div class="container">
                     <label><b>Login</b></label>
                     <br/>
+                    <div th:if="${error12}">
+                        <div class="alert alert-danger">
+                            Invalid username or password.
+                        </div>
+                    </div>
                     <input type="text" placeholder="Username" name="username" required="required"/>
                     <br/>
                     <br/>
@@ -28,11 +33,12 @@
                     <input type="password" placeholder="Password" name="password" required="required"/>
                     <br/>
                     <div id="abc">
+                        </div>
                         <button type="submit" class="loginbtn" id="button1">Login</button>
                         <br/>
                         <button type="button" class="signbtn" id="button2" onclick="location.href='/signup'">Sign Up</button>
                     </div>
-                </div>
+
             </form>
         </div>
     </div>
