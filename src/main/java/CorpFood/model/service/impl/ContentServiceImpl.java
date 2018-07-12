@@ -2,6 +2,7 @@ package CorpFood.model.service.impl;
 
 import CorpFood.model.dto.CreateContentDTO;
 import CorpFood.model.dto.OfferDTO;
+import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Content;
 import CorpFood.model.entity.Offer;
 import CorpFood.model.entity.UserResponse;
@@ -9,12 +10,17 @@ import CorpFood.model.repository.ContentRepository;
 import CorpFood.model.service.ContentService;
 import CorpFood.model.service.OfferService;
 import CorpFood.model.service.UserResponseService;
+import com.google.common.base.Functions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toSet;
 
 @Service
 public class ContentServiceImpl implements ContentService {
@@ -56,25 +62,19 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
-    public Map<OfferDTO, Set<UserResponse>> getAllFoodOrder() {
-        Map<OfferDTO, Set<UserResponse>> result = new HashMap<>();
-        Set<OfferDTO> listedOfferDTO = new HashSet<>();
-//        Set<UserResponseDTO> userResponseDTOS = new HashSet<>();
+    public Map<String, Set<UserResponseDTO>> getAllFoodOrder() {
         List<Offer> listedOffers = offerService.findActiveOffers();
 
-        listedOffers.stream()
-                .forEach(o -> listedOfferDTO
-                        .add(new OfferDTO(o)));
+        Set<OfferDTO> listedOfferDTO = listedOffers.stream()
+                .map(OfferDTO::new)
+                .collect(toSet());
 
-//        listedOfferDTO.stream()
-//                .forEach(o -> userResponseDTOS
-//                        .add(new UserResponseDTO(o.getUserResponses()
-//                                .iterator()
-//                                .next())));
+        return listedOfferDTO.stream()
+                .flatMap(o -> o.getUserResponses().stream())
+                .map(UserResponseDTO::new)
+                .collect(groupingBy(UserResponseDTO::getRestaurant, toSet()));
 
-        listedOfferDTO.stream().forEachOrdered(o -> result.put(o, o.getUserResponses()));
-
-        return result;
+//        listedOfferDTO.stream().forEachOrdered(o -> result.put(o, o.getUserResponses()));
 
 
 
@@ -94,19 +94,21 @@ public class ContentServiceImpl implements ContentService {
 //        return result;
     }
 
-    public Sort sortedBy(){
+    public Sort sortedBy() {
         return new Sort(Sort.Direction.ASC, "restaurant", "login");
     }
-    public boolean isInSeasion(){
+
+    public boolean isInSeasion() {
         return true;
     }
+
     public BigDecimal getAllPrices() {
 
         Set<BigDecimal> temp = new HashSet<>();
 
         Set<UserResponse> all = userResponseService.findAll();
 
-        all.forEach(p-> temp.add(p.getPrice()));
+        all.forEach(p -> temp.add(p.getPrice()));
 
         return temp.stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
