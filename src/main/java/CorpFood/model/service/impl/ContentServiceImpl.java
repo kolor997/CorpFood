@@ -22,14 +22,12 @@ import java.util.*;
 public class ContentServiceImpl implements ContentService {
 
     private ContentRepository contentRepository;
-    private UserResponseRepository userResponseRepository;
     private OfferService offerService;
     private UserResponseService userResponseService;
 
     @Autowired
-    public ContentServiceImpl(ContentRepository contentRepository, UserResponseRepository userResponseRepository, UserResponseService userResponseService, OfferService offerService) {
+    public ContentServiceImpl(ContentRepository contentRepository, UserResponseService userResponseService, OfferService offerService) {
         this.contentRepository = contentRepository;
-        this.userResponseRepository = userResponseRepository;
         this.userResponseService = userResponseService;
         this.offerService = offerService;
     }
@@ -59,24 +57,37 @@ public class ContentServiceImpl implements ContentService {
         contentRepository.delete(id);
     }
 
+    @Override
     public Map<OfferDTO, Set<UserResponseDTO>> getAllFoodOrder() {
         Map<OfferDTO, Set<UserResponseDTO>> result = new HashMap<>();
+        Set<OfferDTO> listedOfferDTO = new HashSet<>();
         Set<UserResponseDTO> userResponseDTOS = new HashSet<>();
-        Set<UserResponse> userResponses = userResponseService.findAll();
-        userResponses.forEach(b -> userResponseDTOS.add(new UserResponseDTO(b)));
-        Set<OfferDTO> offerDTOS = new HashSet<>();
-        Set<Offer> offers = offerService.findAll();
-        offers.forEach(c -> offerDTOS.add(new OfferDTO(c)));
-        for (OfferDTO offerDTO : offerDTOS) {
-            Set<UserResponseDTO> temp = new HashSet<>();
-            for (UserResponseDTO userResponseDTO : userResponseDTOS) {
-                if (offerDTO.getId().equals(userResponseDTO.getOfferID())) { //warunek czas
-                    temp.add(userResponseDTO);
-                }
-            }
-            result.put(offerDTO, temp);
-        }
+        List<Offer> listedOffers = offerService.findActiveOffers();
+
+        listedOffers.stream().forEach(o -> listedOfferDTO.add(new OfferDTO(o)));
+
+        listedOfferDTO.stream().forEach(o -> userResponseDTOS.add(new UserResponseDTO(o.getUserResponses().iterator().next())));
+
+        listedOfferDTO.stream().forEachOrdered(o -> result.put(o, userResponseDTOS));
+
         return result;
+
+
+
+//        userResponses.forEach(b -> userResponseDTOS.add(new UserResponseDTO(b)));
+//        Set<OfferDTO> offerDTOS = new HashSet<>();
+//        Set<Offer> offers = offerService.findAll();
+//        offers.forEach(c -> offerDTOS.add(new OfferDTO(c)));
+//        for (OfferDTO offerDTO : offerDTOS) {
+//            Set<UserResponseDTO> temp = new HashSet<>();
+//            for (UserResponseDTO userResponseDTO : userResponseDTOS) {
+//                if (offerDTO.getId().equals(userResponseDTO.getOfferID())) { //warunek czas
+//                    temp.add(userResponseDTO);
+//                }
+//            }
+//            result.put(offerDTO, temp);
+//        }
+//        return result;
     }
 
     public Sort sortedBy(){

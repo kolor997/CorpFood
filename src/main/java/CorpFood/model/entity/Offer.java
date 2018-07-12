@@ -21,7 +21,7 @@ public class Offer {
     private LocalDateTime creationTime = LocalDateTime.now();
 
     @OneToMany(mappedBy = "offer")
-    private List<UserResponse> userResponses = new ArrayList<>();
+    private Set<UserResponse> userResponses = new HashSet<>();
 
     public Offer() {
     }
@@ -69,7 +69,7 @@ public class Offer {
         return creationTime;
     }
 
-    public List<UserResponse> getUserResponses() {
+    public Set<UserResponse> getUserResponses() {
         return userResponses;
     }
 }

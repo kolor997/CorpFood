@@ -5,6 +5,8 @@ import CorpFood.model.entity.UserResponse;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 public class OfferDTO {
@@ -14,6 +16,7 @@ public class OfferDTO {
     private String URL;
     private String description;
     private LocalDateTime creationTime;
+    private Set<UserResponse> userResponses;
 
     public OfferDTO(Offer offer) {
         this.id = offer.getId();
@@ -21,6 +24,7 @@ public class OfferDTO {
         this.URL = offer.getURL();
         this.description = offer.getDescription();
         this.creationTime = offer.getCreationTime();
+        this.userResponses = offer.getUserResponses();
     }
 
     public Long getId() {
@@ -57,5 +61,13 @@ public class OfferDTO {
 
     public LocalDateTime getCreationTime() {
         return creationTime;
+    }
+
+    public Set<UserResponse> getUserResponses() {
+        return userResponses;
+    }
+
+    public void setUserResponses(Set<UserResponse> userResponses) {
+        this.userResponses = userResponses;
     }
 }
