@@ -49,9 +49,6 @@ public class MainPageController {
         Set<UserResponse> response = userResponseService.findAll();
 
         List<Offer> offers = offerService.findActiveOffers();
-
-
-
         Map<OfferDTO, Set<UserResponse>> activeResponses =  contentService.getAllFoodOrder();
 
         modelAndView.addObject("activeResponses",activeResponses);
@@ -71,7 +68,11 @@ public class MainPageController {
         User user = userRepository.findOneByLogin(userPrincipals.getUsername());
         modelAndView.addObject("userHeader", user.getFirstName() + " " + user.getLastName());
 
+        List<Offer> offers = offerService.findActiveOffers();
+        Map<OfferDTO, Set<UserResponse>> activeResponses =  contentService.getAllFoodOrder();
 
+        modelAndView.addObject("activeResponses",activeResponses);
+        modelAndView.addObject("activeOffers", offers);
 
         Set<UserResponse> response = userResponseService.findAll();
         modelAndView.addObject("responses", response);
