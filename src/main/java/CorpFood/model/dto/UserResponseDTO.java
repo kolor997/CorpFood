@@ -12,6 +12,7 @@ public class UserResponseDTO {
     private String yourOrder;
     private BigDecimal price;
     private Long offerID;
+    private String restaurant;
 
     public UserResponseDTO(UserResponse userResponse){
         this.id = userResponse.getId();
@@ -19,6 +20,7 @@ public class UserResponseDTO {
         this.price = userResponse.getPrice();
         this.yourOrder = userResponse.getYourOrder();
         this.offerID = userResponse.getOffer().getId();
+        this.restaurant = userResponse.getOffer().getRestaurant();
     }
 
     public String getYourOrder() {
@@ -51,5 +53,9 @@ public class UserResponseDTO {
 
     public Long getOfferID() {
         return offerID;
+    }
+
+    public String getRestaurant() {
+        return restaurant;
     }
 }

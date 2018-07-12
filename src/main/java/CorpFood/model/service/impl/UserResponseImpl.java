@@ -50,7 +50,7 @@ public class UserResponseImpl implements UserResponseService {
         String username =  SecurityContextHolder.getContext().getAuthentication().getName();
 
         User user = userRepository.findOneByLogin(username);
-        Offer offer = offerService.findOneById(1L);
+        Offer offer = offerService.findOneById(createUserResponseDTO.getOfferID());
         UserResponse userResponse = new UserResponse();
         userResponse.setOffer(offer);
         userResponse.setYourOrder(createUserResponseDTO.getYourOrder());
