@@ -63,7 +63,7 @@ public class MainPageController {
     }
 
     @RequestMapping(value = "/addUserResponse", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid CreateUserResponseDTO userRes) {
+    public ModelAndView createNewUserResponse(@Valid CreateUserResponseDTO userRes) {
         userResponseService.createUserResponse(userRes);
         return new ModelAndView("redirect:/welcome");
     }

@@ -32,6 +32,7 @@
                             <th>Name</th>
                             <th>Order</th>
                             <th>Price</th>
+                            <th>Restaurant</th>
                         </tr>
                         <div th:each="key : ${keys}">
                             <div th:each="val : ${activeResponses.get(key)}">
@@ -39,6 +40,7 @@
                                 <td th:text="${val.user.firstName}+' '+${val.user.lastName}">q</td>
                                 <td th:text="${val.yourOrder}">q</td>
                                 <td th:text="${val.price}">q</td>
+                                <td th:text="${key}">q</td>
                             </tr>
                             </div>
                         </div>
