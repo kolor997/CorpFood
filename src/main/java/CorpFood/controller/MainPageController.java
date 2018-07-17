@@ -1,7 +1,7 @@
 package CorpFood.controller;
 
 import CorpFood.model.dto.CreateUserResponseDTO;
-import CorpFood.model.dto.OfferDTO;
+import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Offer;
 import CorpFood.model.entity.User;
 import CorpFood.model.entity.UserResponse;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -41,7 +40,6 @@ public class MainPageController {
     }
 
 
-
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public ModelAndView showRegistrationPage(ModelAndView modelAndView, UserResponse userResponse) {
         UserDetails userPrincipals = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -51,10 +49,10 @@ public class MainPageController {
         List<Offer> offers = offerService.findActiveOffers();
 
 
+        Map<String, Set<UserResponseDTO>> activeResponses = contentService.getAllFoodOrder();
 
-        Map<OfferDTO, Set<UserResponse>> activeResponses =  contentService.getAllFoodOrder();
-
-        modelAndView.addObject("activeResponses",activeResponses);
+        modelAndView.addObject("activeResponses", activeResponses);
+        modelAndView.addObject("keys", activeResponses.keySet());
         modelAndView.addObject("activeOffers", offers);
         modelAndView.addObject("responses", response);
 
@@ -64,21 +62,10 @@ public class MainPageController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid CreateUserResponseDTO userRes) {
-        ModelAndView modelAndView = new ModelAndView();
-        UserDetails userPrincipals = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userRepository.findOneByLogin(userPrincipals.getUsername());
-        modelAndView.addObject("userHeader", user.getFirstName() + " " + user.getLastName());
-
-
-
-        Set<UserResponse> response = userResponseService.findAll();
-        modelAndView.addObject("responses", response);
+    @RequestMapping(value = "/addUserResponse", method = RequestMethod.POST)
+    public ModelAndView createNewUserResponse(@Valid CreateUserResponseDTO userRes) {
         userResponseService.createUserResponse(userRes);
-        modelAndView.addObject("userR", new UserResponse());
-        modelAndView.setViewName("FirstPage");
-        return modelAndView;
+        return new ModelAndView("redirect:/welcome");
     }
 
 }
