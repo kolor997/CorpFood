@@ -90,7 +90,6 @@ label {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
     padding: 5px 5px;
     z-index: 1;
-    overflow: auto;
 }
 
 #main_um li:hover .second_floor {
@@ -101,23 +100,26 @@ label {
 }
 
 #main_um li:hover #ban {
-    display: block;
     width: 200px;
     height: auto;
     max-height: 500px;
-    border-radius: 15px 15px;
+    border-radius: 10px 10px;;
+    overflow: auto;
 }
 
-.second_floor li {
-    margin-bottom: 25px;
-
+#main_um li:hover #liveList {
+    width: 480px;
+    height: auto;
+    max-height: 500px;
+    border-radius: 10px 10px;;
+    overflow: auto;
 }
 
 /*///////////////////////////////////////*/
 .animate {
     -webkit-animation: animatezoom 1s;
     animation: animatezoom 1s;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
 
 }
 
@@ -131,25 +133,6 @@ label {
 }
 
 /*/////////////////////////////*/
-#banList {
-    padding: 2px;
-    line-height:2px;
-}
-#banList li{
-    float: left;
-    clear: left;
-}
-#banButton {
-    background-color: crimson;
-    color: white;
-    padding: 7px 10px;
-    border: none;
-    cursor: pointer;
-    width: 150px;
-    margin-left: 7px;
-    border-radius: 4px;
-    outline: none;
-}
 
 /*adding new restaurant*/
 input[type=text] {
@@ -162,7 +145,7 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-button {
+.button button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -195,54 +178,41 @@ button {
     transform: rotate(-25deg);
 }
 
+table {
 
-.mainTable{
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-
-    max-width: 520px;
-    width: auto;
-    height: auto;
-    max-height: 200px;
-
-    background-color: #6F7B8C;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
-    padding: 5px 5px;
-    z-index: 1;
-    overflow: auto;
+    margin: 3px;
+    width: 100%
 }
-table{width: 100%}
-th {
+
+.mainTable th {
     max-width: 183px;
-    border: 1px solid white;
+    border-bottom: 3px ridge #aeaeae;
     padding-left: 2px;
     color: white;
 }
 
-td {
+.a {
+    border-bottom: 2px solid #bfaf24;
+}
+
+.mainTable td {
     word-wrap: break-word;
     max-width: 183px;
-    height: 30px;
+    height: 50px;
     padding-left: 8px;
-    border-bottom: 1px solid white;
     color: white;
 }
 
-.deleteButton{
-    background: #6F7B8C url("../img/deleteButton.png");
-    width: 15px;
-    height: 29px;
-    border: none;
-    padding-right: 13px;
-    margin-left: 5px;
-    margin-bottom: 15px;
+#banList td {
+    height: 50px;
 }
 
-.deleteB{
-    word-wrap: normal;
-    max-width: 1px;
-    height: 1px;
-    padding-left: 0px;
+#banList .b {
+    border-bottom: 2px solid #e42c2f;
+}
+
+.buttonD button {
+    background-color: transparent;
     border: none;
+    outline: none;
 }

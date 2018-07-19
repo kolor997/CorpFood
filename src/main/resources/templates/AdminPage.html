@@ -42,53 +42,59 @@
                             </ul>
                         </li>
                         <li><a href="#"><img th:src="@{/img/list.png}" title="list"/></a>
-                            <ul class="second_floor animate">
-                                    <div class="mainTable">
-                                        <table>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Order</th>
-                                                <th>Price</th>
-                                                <th>Restaurant</th>
-                                            </tr>
-                                            <div th:each="key : ${keys}">
-                                                <div th:each="val : ${activeResponses.get(key)}">
-                                                    <tr>
-                                                        <td th:text="${val.user.firstName}+' '+${val.user.lastName}">q</td>
-                                                        <td th:text="${val.yourOrder}">q</td>
-                                                        <td th:text="${val.price}">q</td>
-                                                        <td th:text="${key}">q</td>
-                                                        <td class="deleteB">
-                                                            <form th:action="@{/deleteUserResponse/{id}(id=${val.id})}" th:object="${activeResponses}" method="post">
-                                                                <input type="hidden" th:field="${activeResponses}"/>
-                                                                <button class="deleteButton" type="submit" value="Delete" onClick="return confirm('Confirm delete?')"/>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                </div>
+                            <ul class="second_floor animate" id="liveList">
+                                <div class="mainTable">
+                                    <table>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Order</th>
+                                            <th>Price</th>
+                                            <th>Restaurant</th>
+                                        </tr>
+                                        <div th:each="key : ${keys}">
+                                            <div th:each="val : ${activeResponses.get(key)}">
+                                                <tr>
+                                                    <td class="a"
+                                                        th:text="${val.user.firstName}+' '+${val.user.lastName}"></td>
+                                                    <td class="a" th:text="${val.yourOrder}"></td>
+                                                    <td class="a" th:text="${val.price}"></td>
+                                                    <td class="a" th:text="${key}"></td>
+                                                    <td class="buttonD">
+                                                        <form th:action="@{/deleteUserResponse/{id}(id=${val.id})}"
+                                                              th:object="${activeResponses}" method="post">
+                                                            <input type="hidden" th:field="${activeResponses}"/>
+                                                            <button type="submit"
+                                                                    value="Delete"
+                                                                    onClick="return confirm('Confirm delete?')"><img
+                                                                    src="../deleteButton.png"
+                                                                    th:src="@{/img/deleteButton.png}"/></button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                             </div>
-                                        </table>
-                                    </div>
+                                        </div>
+                                    </table>
+                                </div>
                             </ul>
                         </li>
                         <li><a href="#"><img th:src="@{/img/money1.png}" title="money"/></a></li>
                         <li><a href="#"><img th:src="@{/img/ban.png}" title="Ban"/></a>
                             <ul class="second_floor animate" id="ban">
-                                <div class="mainTable">
-                                    <table>
-                                            <div th:each="user : ${users}">
-                                                <tr>
-                                                    <td th:text="${user.firstName}+' '+${user.lastName}"></td>
-                                                    <td class="deleteB">
-                                                        <form th:action="@{/deleteUser/{id}(id=${user.id})}" th:object="${users}" method="post">
-                                                            <input type="hidden" th:field="${users}"/>
-                                                            <button class="deleteButton" type="submit" value="Delete" onClick="return confirm('Confirm delete?')"/>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            </div>
-                                    </table>
-                                </div>
+                                <table id="banList">
+                                    <tr th:each="user : ${users}">
+                                        <td class="b" th:text="${user.firstName}+' '+${user.lastName}">Admin nowak
+                                        </td>
+                                        <td class="buttonD">
+                                            <form th:action="@{/deleteUser/{id}(id=${user.id})}" th:object="${users}"
+                                                  method="post">
+                                                <input type="hidden" th:field="${users}"/>
+                                                <button type="submit" value="Delete"
+                                                        onClick="return confirm('Confirm delete?')"><img th:src="@{/img/deleteButton.png}"/>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
                             </ul>
                         </li>
                     </ul>

@@ -52,9 +52,10 @@
                               class="m-t" role="form" data-toggle="validator">
                             <label><b>Order: </b></label>
                             <br/>
-                            <div th:each="offer : ${activeOffers}">
-                            <input type="radio" id="radio1" class="order" name="offerID"
-                                   th:value="${offer.getId()}" th:text="${offer.getRestaurant()}"/>
+                            <div th:each="offer : ${activeOffers}" class="radioB">
+                                <input type="radio" id="radio1" name="offerID"
+                                       th:value="${offer.getId()}"/>
+                                <label for="radio1" th:text="${offer.getRestaurant()}" class="order"></label>
                             </div>
                             <br/>
                             <input type="text" th:field="*{yourOrder}" placeholder="Your order" name="order"/>
