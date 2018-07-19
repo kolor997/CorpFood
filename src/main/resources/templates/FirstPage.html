@@ -8,7 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Order</title>
 </head>
-<body onload="startTime()">
+<body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
@@ -25,7 +25,8 @@
                 <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin" title="Admin Page"/></a>
                 </div>
                 <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/logout.png}" alt="Logout"
-                                                                 title="Logout"/></a></div>
+                                                                 title="Logout"/></a>
+                </div>
                 <div class="mainTable">
                     <table>
                         <tr>
@@ -36,29 +37,32 @@
                         </tr>
                         <div th:each="key : ${keys}">
                             <div th:each="val : ${activeResponses.get(key)}">
-                            <tr>
-                                    <td th:text="${val.user.firstName}+' '+${val.user.lastName}">q</td>
-                                    <td th:text="${val.yourOrder}">q</td>
-                                    <td th:text="${val.price}">q</td>
-                                    <td th:text="${key}">q</td>
+                                <tr>
+                                    <td th:text="${val.user.firstName}+' '+${val.user.lastName}"></td>
+                                    <td th:text="${val.yourOrder}"></td>
+                                    <td th:text="${val.price}"></td>
+                                    <td th:text="${key}"></td>
                                     <td class="deleteB">
                                         <div th:if="${userHeader == val.user}">
-                                        <form th:action="@{/selfDeleteUserResponse/{id}(id=${val.id})}" th:object="${activeResponses}" method="post">
-                                            <input type="hidden" th:field="${activeResponses}"/>
-                                            <button class="deleteButton" type="submit" value="Delete" onClick="return confirm('Confirm delete?')"/>
-                                        </form>
+                                            <form th:action="@{/selfDeleteUserResponse/{id}(id=${val.id})}"
+                                                  th:object="${activeResponses}" method="post">
+                                                <input type="hidden" th:field="${activeResponses}"/>
+                                                <button class="deleteButton" type="submit" value="Delete"
+                                                        onClick="return confirm('Confirm delete?')"/>
+                                            </form>
                                         </div>
                                         <div th:unless="${userHeader != val.user}">
                                         </div>
                                     </td>
-                            </tr>
+                                </tr>
                             </div>
                         </div>
                     </table>
                 </div>
                 <div id="id01" class="modal">
                     <div class="container1 animate">
-                        <form autocomplete="off" action="#" th:action="@{/addUserResponse}" th:object="${userR}" method="post"
+                        <form autocomplete="off" action="#" th:action="@{/addUserResponse}" th:object="${userR}"
+                              method="post"
                               class="m-t" role="form" data-toggle="validator">
                             <label><b>Order: </b></label>
                             <br/>
