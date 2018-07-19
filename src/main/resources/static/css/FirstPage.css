@@ -304,20 +304,21 @@ td {
     color: white;
 }
 
-.deleteButton{
+.deleteButton {
     background: #6F7B8C url("../img/deleteButton.png");
-    width: 15px;
-    height: 29px;
+    width: 30px;
+    height: 30px;
     border: none;
     padding-right: 13px;
-    margin-left: 5px;
-    margin-bottom: 15px;
+    margin-top: auto;
+    margin-left: 5%;
+    margin-bottom: 20%;
 }
 
 .deleteB{
-    word-wrap: normal;
-    max-width: 1px;
-    height: 1px;
-    padding-left: 0px;
     border: none;
+}
+
+.deleteForm{
+    height: 30px;
 }
