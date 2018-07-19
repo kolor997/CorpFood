@@ -303,3 +303,21 @@ td {
     border-bottom: 1px solid white;
     color: white;
 }
+
+.deleteButton{
+    background: #6F7B8C url("../img/deleteButton.png");
+    width: 15px;
+    height: 29px;
+    border: none;
+    padding-right: 13px;
+    margin-left: 5px;
+    margin-bottom: 15px;
+}
+
+.deleteB{
+    word-wrap: normal;
+    max-width: 1px;
+    height: 1px;
+    padding-left: 0px;
+    border: none;
+}
