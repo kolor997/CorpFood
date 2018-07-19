@@ -17,5 +17,9 @@ public interface UserResponseService {
 
     void deleteUserResponse(Long id);
 
+    void deleteUserResponsesByUserId(Long id);
+
     List<UserResponse> listAllUserResponses();
+
+
 }

@@ -18,15 +18,13 @@ public class EmailController {
 
     private final EmailSender emailSender;
     private final TemplateEngine templateEngine;
-    private final UserResponseService userResponseService;
     private final ContentServiceImpl contentService;
 
     @Autowired
     public EmailController(EmailSender emailSender,
-                           TemplateEngine templateEngine, UserResponseService userResponseService, ContentServiceImpl contentService){
+                           TemplateEngine templateEngine, ContentServiceImpl contentService){
         this.emailSender = emailSender;
         this.templateEngine = templateEngine;
-        this.userResponseService = userResponseService;
         this.contentService = contentService;
     }
 

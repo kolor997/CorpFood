@@ -65,6 +65,14 @@ public class UserResponseImpl implements UserResponseService {
     }
 
     @Override
+    public void deleteUserResponsesByUserId(Long userId) {
+        List<UserResponse> userResponses = userResponseRepository.findUserResponsesByUser_Id(userId);
+
+        userResponses.stream()
+                .forEach(r -> userResponseRepository.delete(r.getId()));
+    }
+
+    @Override
     public List<UserResponse> listAllUserResponses() {
         List<UserResponse> responses= userResponseRepository.findAll();
         return responses;

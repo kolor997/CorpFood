@@ -69,6 +69,7 @@ public class AdminController {
 
     @RequestMapping(value = "/deleteUser/{id}", method = RequestMethod.POST)
     public String deleteUser(@PathVariable Long id) {
+        userResponseService.deleteUserResponsesByUserId(id);
         userService.deleteUser(id);
         return "redirect:/adminPa";
     }
