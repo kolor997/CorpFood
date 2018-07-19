@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div id="loginHeader">
-                <p id="header" th:text="${userHeader}"></p>
+                <p id="header" th:text="${userHeader.firstName}+' '+${userHeader.lastName}"></p>
             </div>
             <div class="container">
                 <div class="restaurantWindow" th:each="active:${activeOffers}">
@@ -37,10 +37,20 @@
                         <div th:each="key : ${keys}">
                             <div th:each="val : ${activeResponses.get(key)}">
                             <tr>
-                                <td th:text="${val.user.firstName}+' '+${val.user.lastName}">q</td>
-                                <td th:text="${val.yourOrder}">q</td>
-                                <td th:text="${val.price}">q</td>
-                                <td th:text="${key}">q</td>
+                                    <td th:text="${val.user.firstName}+' '+${val.user.lastName}">q</td>
+                                    <td th:text="${val.yourOrder}">q</td>
+                                    <td th:text="${val.price}">q</td>
+                                    <td th:text="${key}">q</td>
+                                    <td class="deleteB">
+                                        <div th:if="${userHeader == val.user}">
+                                        <form th:action="@{/selfDeleteUserResponse/{id}(id=${val.id})}" th:object="${activeResponses}" method="post">
+                                            <input type="hidden" th:field="${activeResponses}"/>
+                                            <button class="deleteButton" type="submit" value="Delete" onClick="return confirm('Confirm delete?')"/>
+                                        </form>
+                                        </div>
+                                        <div th:unless="${userHeader != val.user}">
+                                        </div>
+                                    </td>
                             </tr>
                             </div>
                         </div>

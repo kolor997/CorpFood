@@ -141,7 +141,6 @@ button:hover {
     opacity: 0.98;
     width: 600px;
     height: 350px;
-    font-family: Bookman, URW Bookman L, serif
 }
 
 /* The Modal (background) */
@@ -303,12 +302,4 @@ td {
     padding-left: 8px;
     border-bottom: 1px solid white;
     color: white;
-}
-.radioB {
-    display: inline-block;
-    margin: 5px;
-}
-
-.order {
-    font-size: 20px;
 }

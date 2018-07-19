@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -56,7 +57,7 @@ public class MainPageController {
         modelAndView.addObject("activeOffers", offers);
         modelAndView.addObject("responses", response);
 
-        modelAndView.addObject("userHeader", user.getFirstName() + " " + user.getLastName());
+        modelAndView.addObject("userHeader", user);
         modelAndView.addObject("userR", userResponse);
         modelAndView.setViewName("FirstPage");
         return modelAndView;
@@ -66,6 +67,12 @@ public class MainPageController {
     public ModelAndView createNewUserResponse(@Valid CreateUserResponseDTO userRes) {
         userResponseService.createUserResponse(userRes);
         return new ModelAndView("redirect:/welcome");
+    }
+
+    @RequestMapping(value = "/selfDeleteUserResponse/{id}", method = RequestMethod.POST)
+    public String selfDeleteUserResponse(@PathVariable Long id) {
+        userResponseService.deleteUserResponse(id);
+        return "redirect:/welcome";
     }
 
 }
