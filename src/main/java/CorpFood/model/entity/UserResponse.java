@@ -44,8 +44,7 @@ public class UserResponse {
     public void setId(Long id) {
         this.id = id;
     }
-
-
+    
     public BigDecimal getPrice() {
         return price;
     }

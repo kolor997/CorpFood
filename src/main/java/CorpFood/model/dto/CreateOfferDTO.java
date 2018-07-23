@@ -5,6 +5,7 @@ public class CreateOfferDTO {
     private String restaurant;
     private String URL;
     private String description;
+    private String expirationTime;
 
     public CreateOfferDTO() {
     }
@@ -31,5 +32,13 @@ public class CreateOfferDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getExpirationTime() {
+        return expirationTime;
+    }
+
+    public void setExpirationTime(String expirationTime) {
+        this.expirationTime = expirationTime;
     }
 }

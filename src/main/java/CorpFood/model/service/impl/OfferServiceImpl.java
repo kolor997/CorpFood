@@ -1,21 +1,17 @@
 package CorpFood.model.service.impl;
 
 import CorpFood.model.dto.CreateOfferDTO;
-import CorpFood.model.dto.OfferDTO;
-import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Offer;
-import CorpFood.model.entity.UserResponse;
 import CorpFood.model.repository.OfferRepository;
-import CorpFood.model.repository.UserRepository;
-import CorpFood.model.repository.UserResponseRepository;
 import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -52,6 +48,7 @@ public class OfferServiceImpl implements OfferService {
         offer.setRestaurant(createOfferDTO.getRestaurant());
         offer.setURL(createOfferDTO.getURL());
         offer.setDescription(createOfferDTO.getDescription());
+        offer.setExpirationTime(createOfferDTO.getExpirationTime());
         return offerRepository.save(offer);
     }
 
@@ -63,5 +60,18 @@ public class OfferServiceImpl implements OfferService {
                 .sorted(comparing(Offer::getCreationTime))
                 .collect(Collectors.toList());
     }
+
+//    @Override
+//    public Map<Offer, Long> offerDuration(){
+//        Map<Offer, Long> offersDurations = new HashMap<>();
+//        LocalDate dateNow = LocalDate.now();
+//        List<Offer> activeOffers = findActiveOffers();
+//        for (Offer o : activeOffers) {
+//            LocalDateTime endTime = LocalTime.parse(o.getExpirationTime()).atDate(dateNow);
+//            Long offerDuration = endTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() - o.getCreationTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+//            offersDurations.put(o, offerDuration);
+//        }
+//        return offersDurations;
+//    }
 
 }

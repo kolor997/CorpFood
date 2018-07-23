@@ -34,6 +34,12 @@
                                         <label><b>URL: </b></label>
                                         <br/>
                                         <input type="text" th:field="*{URL}" placeholder="url" name="url" required="required"/>
+                                        <br/>
+                                        <br/>
+                                        <label><b>Offer expires at: </b></label>
+                                        <br/>
+                                        <input type="time" th:field="*{expirationTime}" name="time" required="required" title="time"/>
+
                                         <div class="button">
                                             <button type="submit" class="addNew" id="button2">Add</button>
                                         </div>
@@ -85,11 +91,9 @@
                                         <td class="b" th:text="${user.firstName}+' '+${user.lastName}">Admin nowak
                                         </td>
                                         <td class="buttonD">
-                                            <form th:action="@{/deleteUser/{id}(id=${user.id})}" th:object="${users}"
-                                                  method="post">
+                                            <form th:action="@{/deleteUser/{id}(id=${user.id})}" th:object="${users}" method="post">
                                                 <input type="hidden" th:field="${users}"/>
-                                                <button type="submit" value="Delete"
-                                                        onClick="return confirm('Confirm delete?')"><img th:src="@{/img/deleteButton.png}"/>
+                                                <button type="submit" value="Delete" onClick="return confirm('Confirm delete?')"><img th:src="@{/img/deleteButton.png}"/>
                                                 </button>
                                             </form>
                                         </td>

@@ -16,7 +16,9 @@ public class OfferDTO {
     private String URL;
     private String description;
     private LocalDateTime creationTime;
+    private String expirationTime;
     private Set<UserResponse> userResponses;
+    private Long duration;
 
     public OfferDTO(Offer offer) {
         this.id = offer.getId();
@@ -24,7 +26,9 @@ public class OfferDTO {
         this.URL = offer.getURL();
         this.description = offer.getDescription();
         this.creationTime = offer.getCreationTime();
+        this.expirationTime = offer.getExpirationTime();
         this.userResponses = offer.getUserResponses();
+        this.duration = offer.getDuration();
     }
 
     public Long getId() {
@@ -69,5 +73,17 @@ public class OfferDTO {
 
     public void setUserResponses(Set<UserResponse> userResponses) {
         this.userResponses = userResponses;
+    }
+
+    public String getExpirationTime() {
+        return expirationTime;
+    }
+
+    public void setExpirationTime(String expirationTime) {
+        this.expirationTime = expirationTime;
+    }
+
+    public Long getDuration() {
+        return duration;
     }
 }

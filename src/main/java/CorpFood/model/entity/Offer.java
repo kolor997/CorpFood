@@ -5,6 +5,8 @@ import org.apache.catalina.User;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -19,6 +21,7 @@ public class Offer {
     private String URL;
     private String description;
     private LocalDateTime creationTime = LocalDateTime.now();
+    private String expirationTime;
 
     @OneToMany(mappedBy = "offer")
     private Set<UserResponse> userResponses = new HashSet<>();
@@ -26,7 +29,8 @@ public class Offer {
     public Offer() {
     }
 
-    public Offer(String restaurant, String URL, String description) {
+    public Offer(String restaurant, String URL, String description, String expirationTime) {
+        this.expirationTime = expirationTime;
         this.restaurant = restaurant;
         this.URL = URL;
         this.description = description;
@@ -71,5 +75,18 @@ public class Offer {
 
     public Set<UserResponse> getUserResponses() {
         return userResponses;
+    }
+
+    public String getExpirationTime() {
+        return expirationTime;
+    }
+
+    public void setExpirationTime(String expirationTime) {
+        this.expirationTime = expirationTime;
+    }
+
+    public Long getDuration() {
+        Long duration;
+        return duration = LocalTime.parse(getExpirationTime()).atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() - getCreationTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 }

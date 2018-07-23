@@ -46,9 +46,7 @@ public class MainPageController {
         UserDetails userPrincipals = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepository.findOneByLogin(userPrincipals.getUsername());
         Set<UserResponse> response = userResponseService.findAll();
-
         List<Offer> offers = offerService.findActiveOffers();
-
 
         Map<String, Set<UserResponseDTO>> activeResponses = contentService.getAllFoodOrder();
 

@@ -288,20 +288,22 @@ input[type=radio] {
     z-index: 1;
     overflow: auto;
 }
-table{width: 100%}
-th {
+table{
+    margin: 3px;
+    width: 100%
+}
+.mainTable th {
     max-width: 183px;
-    border: 1px solid white;
+    border-bottom: 3px ridge #aeaeae;
     padding-left: 2px;
     color: white;
 }
 
-td {
+.mainTable td {
     word-wrap: break-word;
     max-width: 183px;
-    height: 30px;
+    height: 50px;
     padding-left: 8px;
-    border-bottom: 1px solid white;
     color: white;
 }
 .radioB {
@@ -312,4 +314,22 @@ td {
 .order {
     font-size: 20px;
     font-family: Bookman, URW Bookman L, serif
+}
+
+.buttonD button {
+    background-color: transparent;
+    background-image: url('../img/deleteButton.png');
+    width: 24px;
+    height: 24px;
+    border: none;
+    outline: none;
+    margin-top: auto;
+    margin-left: 0%;
+    margin-bottom: auto;
+    padding-right: 5%;
+    padding-bottom: 1%;
+}
+
+.a {
+    border-bottom: 2px solid #bfaf24;
 }

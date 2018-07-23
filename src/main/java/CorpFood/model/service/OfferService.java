@@ -1,11 +1,10 @@
 package CorpFood.model.service;
 
 import CorpFood.model.dto.CreateOfferDTO;
-import CorpFood.model.dto.OfferDTO;
 import CorpFood.model.entity.Offer;
-import CorpFood.model.entity.UserResponse;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public interface OfferService {
@@ -16,7 +15,9 @@ public interface OfferService {
 
     void deleteOffer(Long id);
 
-    Offer createOffer(CreateOfferDTO createUserDto);
+    Offer createOffer(CreateOfferDTO createOfferDTO);
 
     List<Offer> findActiveOffers();
+
+//    Map<Offer, Long> offerDuration();
 }
