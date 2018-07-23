@@ -95,7 +95,7 @@ label {
 #main_um li:hover .second_floor {
     display: block;
     width: 480px;
-    height: 435px;
+    height: auto;
     border-radius: 15px 15px;
 }
 
@@ -143,6 +143,16 @@ input[type=text] {
     border: 2px solid #4CAF50;
     border-radius: 4px;
     box-sizing: border-box;
+}
+
+input[type=time]{
+    border: 2px solid #4CAF50;
+    padding: 12px 20px;
+    margin: 5px 0px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-left: 40%;
+    padding-right: 5px;
 }
 
 .button button {
@@ -216,4 +226,8 @@ table {
     background-color: transparent;
     border: none;
     outline: none;
+}
+
+.offerTIme{
+    margin-left: 35%;
 }
