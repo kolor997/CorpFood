@@ -49,6 +49,7 @@ public class OfferServiceImpl implements OfferService {
         offer.setURL(createOfferDTO.getURL());
         offer.setDescription(createOfferDTO.getDescription());
         offer.setExpirationTime(createOfferDTO.getExpirationTime());
+        offer.setDuration(createOfferDTO.getDuration());
         return offerRepository.save(offer);
     }
 

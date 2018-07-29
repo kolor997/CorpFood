@@ -18,7 +18,7 @@ public class OfferDTO {
     private LocalDateTime creationTime;
     private String expirationTime;
     private Set<UserResponse> userResponses;
-    private Long duration;
+    private String duration;
 
     public OfferDTO(Offer offer) {
         this.id = offer.getId();
@@ -83,7 +83,7 @@ public class OfferDTO {
         this.expirationTime = expirationTime;
     }
 
-    public Long getDuration() {
+    public String getDuration() {
         return duration;
     }
 }

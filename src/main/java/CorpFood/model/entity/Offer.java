@@ -1,6 +1,7 @@
 package CorpFood.model.entity;
 
 import org.apache.catalina.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class Offer {
     private String description;
     private LocalDateTime creationTime = LocalDateTime.now();
     private String expirationTime;
+    private String duration;
 
     @OneToMany(mappedBy = "offer")
     private Set<UserResponse> userResponses = new HashSet<>();
@@ -35,6 +37,7 @@ public class Offer {
         this.URL = URL;
         this.description = description;
         this.creationTime = getCreationTime();
+        this.duration = getDuration();
     }
 
     public Long getId() {
@@ -85,8 +88,11 @@ public class Offer {
         this.expirationTime = expirationTime;
     }
 
-    public Long getDuration() {
-        Long duration;
-        return duration = LocalTime.parse(getExpirationTime()).atDate(LocalDate.now()).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() - getCreationTime().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 }

@@ -1,7 +1,9 @@
 package CorpFood.mail;
 
+import CorpFood.model.service.OfferService;
 import CorpFood.model.service.UserResponseService;
 import CorpFood.model.service.impl.ContentServiceImpl;
+import CorpFood.model.service.impl.OfferServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +21,15 @@ public class EmailController {
     private final EmailSender emailSender;
     private final TemplateEngine templateEngine;
     private final ContentServiceImpl contentService;
+    private final OfferService offerService;
 
     @Autowired
     public EmailController(EmailSender emailSender,
-                           TemplateEngine templateEngine, ContentServiceImpl contentService){
+                           TemplateEngine templateEngine, ContentServiceImpl contentService, OfferService offerService){
         this.emailSender = emailSender;
         this.templateEngine = templateEngine;
         this.contentService = contentService;
+        this.offerService = offerService;
     }
 
     @PutMapping("/send")
