@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
 public class User {
@@ -17,6 +18,7 @@ public class User {
     private String login;
     private String password;
     private String role = "USER";
+    private BigDecimal debt = BigDecimal.valueOf(0.00);
 
     public User(){}
 
@@ -76,4 +78,11 @@ public class User {
         this.password = password;
     }
 
+    public BigDecimal getDebt() {
+        return debt;
+    }
+
+    public void setDebt(BigDecimal debt) {
+        this.debt = debt;
+    }
 }

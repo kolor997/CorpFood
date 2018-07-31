@@ -100,7 +100,15 @@ label {
 }
 
 #main_um li:hover #ban {
-    width: 200px;
+     width: 200px;
+     height: auto;
+     max-height: 500px;
+     border-radius: 10px 10px;;
+     overflow: auto;
+}
+
+#main_um li:hover #money {
+    width: auto;
     height: auto;
     max-height: 500px;
     border-radius: 10px 10px;;

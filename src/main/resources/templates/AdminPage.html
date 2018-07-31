@@ -83,7 +83,35 @@
                                 </div>
                             </ul>
                         </li>
-                        <li><a href="#"><img th:src="@{/img/money1.png}" title="money"/></a></li>
+                        <li><a href="#"><img th:src="@{/img/money1.png}" title="money"/></a>
+                            <ul class="second_floor animate" id="money">
+                                <div class="mainTable">
+                                <table>
+                                    <tr>
+                                    <th>Name</th>
+                                    <th>Debt</th>
+                                    </tr>
+                                    <tr th:each="user : ${users}">
+                                        <div th:if="${user.debt} > 0">
+                                        <td class="b" th:text="${user.firstName}+' '+${user.lastName}">Admin nowak
+                                        </td>
+                                        <td class="b" th:text="${user.debt}">q
+                                        </td>
+                                        <td class="buttonD">
+                                            <form th:action="@{/deleteUser/{id}(id=${user.id})}" th:object="${users}" method="post">
+                                                <input type="hidden" th:field="${users}"/>
+                                                <button type="submit" value="Delete" onClick="return confirm('Confirm delete?')"><img th:src="@{/img/deleteButton.png}"/>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        </div>
+                                        <div th:unless="${user.debt} <= 0">
+                                        </div>
+                                    </tr>
+                                </table>
+                                </div>
+                            </ul>
+                        </li>
                         <li><a href="#"><img th:src="@{/img/ban.png}" title="Ban"/></a>
                             <ul class="second_floor animate" id="ban">
                                 <table id="banList">

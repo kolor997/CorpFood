@@ -39,7 +39,7 @@ public class AdminController {
     }
 
     @RequestMapping(value ="/adminPa", method = RequestMethod.GET)
-    public ModelAndView addingNewOffer(ModelAndView model, Offer offer){
+    public ModelAndView showActiveResponses(ModelAndView model, Offer offer){
 
         Map<String, Set<UserResponseDTO>> activeResponses = contentService.getAllFoodOrder();
 

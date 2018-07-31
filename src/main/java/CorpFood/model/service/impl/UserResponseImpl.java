@@ -56,6 +56,7 @@ public class UserResponseImpl implements UserResponseService {
         userResponse.setYourOrder(createUserResponseDTO.getYourOrder());
         userResponse.setUser(user);
         userResponse.setPrice(createUserResponseDTO.getPrice());
+        user.setDebt(user.getDebt().add(createUserResponseDTO.getPrice()));
         return userResponseRepository.save(userResponse);
     }
 

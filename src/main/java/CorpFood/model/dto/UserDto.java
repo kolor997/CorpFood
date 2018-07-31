@@ -2,6 +2,8 @@ package CorpFood.model.dto;
 
 import CorpFood.model.entity.User;
 
+import java.math.BigDecimal;
+
 public class UserDto {
 
     private Long id;
@@ -9,6 +11,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String role;
+    private BigDecimal debt;
 
     public UserDto(User user) {
         this.id = user.getId();
@@ -16,6 +19,7 @@ public class UserDto {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.role = user.getRole();
+        this.debt = user.getDebt();
     }
 
     public Long getId() {
@@ -49,5 +53,13 @@ public class UserDto {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public BigDecimal getDebt() {
+        return debt;
+    }
+
+    public void setDebt(BigDecimal debt) {
+        this.debt = debt;
     }
 }
