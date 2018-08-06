@@ -43,12 +43,31 @@ button:hover {
     height: 50px;
 }
 
+
+#loginHeader2 {
+    margin-top: 1%;
+    margin-right: auto;
+    margin-left: auto;
+    position: center;
+    border: 3px solid #4CAF50;
+    border-radius: 20px 15px;
+    background-color: #f9f9f9;
+    opacity: 0.98;
+    width: 300px;
+    height: 75px;
+}
 #header {
     font-family: "Eras Medium ITC", serif;
     font-size: 30px;
     text-align: center;
     color: #4CAF50;
     margin-top: 0;
+}
+.header2{
+    font-family: "Eras Medium ITC", serif;
+    font-size: 20px;
+    text-align: center;
+    color: #ff191c;
 }
 
 .container {

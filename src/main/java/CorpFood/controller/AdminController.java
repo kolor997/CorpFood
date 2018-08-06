@@ -1,7 +1,6 @@
 package CorpFood.controller;
 
 import CorpFood.model.dto.CreateOfferDTO;
-import CorpFood.model.dto.CreateUserResponseDTO;
 import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Offer;
 import CorpFood.model.repository.UserRepository;

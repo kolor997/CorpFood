@@ -15,39 +15,39 @@
             <div id="loginHeader">
                 <p id="header" th:text="${userHeader.firstName}+' '+${userHeader.lastName}"></p>
             </div>
+            <div id="loginHeader2" th:each="active:${activeOffers}">
+                <p class="header2" th:text="${'Offer expires at: ' +active.expirationTime}" ></p>
+                <p class="header2" th:id="${'Time remaining: '+active.restaurant}"></p>
+                <script th:inline="javascript">
+                    //<![CDATA[
+
+                    var countDownDate = new Date(/*[[${active.duration}]]*/ 'default').getTime();
+
+                    var x = setInterval(function () {
+
+                        var now = new Date().getTime();
+
+                        var distance = countDownDate - now;
+
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        document.getElementById(/*[[${active.restaurant}]]*/'default').innerHTML = hours + "h "
+                            + minutes + "m " + seconds + "s ";
+
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById(/*[[${active.restaurant}]]*/'default').innerHTML = "EXPIRED";
+                        }
+                    }, 1000);
+                    //]]>
+                </script>
+            </div>
             <div class="container">
                 <div class="restaurantWindow" th:each="active:${activeOffers}">
                     <h1 th:text="${active.restaurant}"></h1>
                     <p th:text="${active.description}"></p>
                     <p><a th:href="${active.URL}">MENU</a></p>
-                    <h2>Offer expires at:</h2>
-                    <h2 th:text="${active.expirationTime}"><b></b></h2>
-                    <p>Time remaining:</p>
-                    <p th:id="${active.restaurant}"></p>
-                    <script th:inline="javascript">
-                       //<![CDATA[
-
-                        var countDownDate = new Date(/*[[${active.duration}]]*/ 'default').getTime();
-
-                        var x = setInterval(function() {
-
-                            var now = new Date().getTime();
-
-                            var distance = countDownDate - now;
-
-                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                            document.getElementById(/*[[${active.restaurant}]]*/'default').innerHTML = hours + "h "
-                                + minutes + "m " + seconds + "s ";
-
-                            if (distance < 0) {
-                                clearInterval(x);
-                                document.getElementById(/*[[${active.restaurant}]]*/'default').innerHTML = "EXPIRED";
-                            }
-                        }, 1000);
-                        //]]>
-                    </script>
                 </div>
                 <button onclick="document.getElementById('id01').style.display='block'" id="orderBtn">Order</button>
                 <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin" title="Admin Page"/></a>

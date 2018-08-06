@@ -153,14 +153,13 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-input[type=time]{
-    border: 2px solid #4CAF50;
-    padding: 12px 20px;
-    margin: 5px 0px;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-left: 40%;
-    padding-right: 5px;
+input[type=time] {
+    border: none;
+    background-color: #2ECC71;
+    border-radius: 15px;
+    padding: 12px 5px 12px 20px;
+    outline: none;
+
 }
 
 .button button {
@@ -192,7 +191,7 @@ input[type=time]{
 #logo {
     position: static;
     width: 600px;
-    opacity: 0.5;
+    opacity: 0.3;
     transform: rotate(-25deg);
 }
 
@@ -236,6 +235,35 @@ table {
     outline: none;
 }
 
-.offerTIme{
-    margin-left: 35%;
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+#middleMenu {
+    margin-top: -300px;
+}
+
+.timeForm {
+    font-size: 50px;
+    display: inline-block;
+
+}
+
+.timeForm button {
+    text-align: center;
+    alignment: center;
+    background-color: transparent;
+}
+
+#clock {
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+#sendMail {
+    margin-top: 304px;
+    margin-left: 693px;
+    position: relative
 }
