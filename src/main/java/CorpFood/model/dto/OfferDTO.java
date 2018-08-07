@@ -4,7 +4,6 @@ import CorpFood.model.entity.Offer;
 import CorpFood.model.entity.UserResponse;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 public class OfferDTO {
@@ -14,6 +13,9 @@ public class OfferDTO {
     private String URL;
     private String description;
     private LocalDateTime creationTime;
+    private String expirationTime;
+    private Set<UserResponse> userResponses;
+    private String duration;
 
     public OfferDTO(Offer offer) {
         this.id = offer.getId();
@@ -21,6 +23,9 @@ public class OfferDTO {
         this.URL = offer.getURL();
         this.description = offer.getDescription();
         this.creationTime = offer.getCreationTime();
+        this.expirationTime = offer.getExpirationTime();
+        this.userResponses = offer.getUserResponses();
+        this.duration = offer.getDuration();
     }
 
     public Long getId() {
@@ -57,5 +62,25 @@ public class OfferDTO {
 
     public LocalDateTime getCreationTime() {
         return creationTime;
+    }
+
+    public Set<UserResponse> getUserResponses() {
+        return userResponses;
+    }
+
+    public void setUserResponses(Set<UserResponse> userResponses) {
+        this.userResponses = userResponses;
+    }
+
+    public String getExpirationTime() {
+        return expirationTime;
+    }
+
+    public void setExpirationTime(String expirationTime) {
+        this.expirationTime = expirationTime;
+    }
+
+    public String getDuration() {
+        return duration;
     }
 }

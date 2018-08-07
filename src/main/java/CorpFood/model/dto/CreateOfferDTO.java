@@ -1,10 +1,16 @@
 package CorpFood.model.dto;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 public class CreateOfferDTO {
 
     private String restaurant;
     private String URL;
     private String description;
+    private String expirationTime;
+    private String duration;
 
     public CreateOfferDTO() {
     }
@@ -31,5 +37,18 @@ public class CreateOfferDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getExpirationTime() {
+        return expirationTime;
+    }
+
+    public void setExpirationTime(String expirationTime) {
+        this.expirationTime = expirationTime;
+    }
+
+    public String getDuration() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm:ss");
+        return duration = String.format(LocalTime.parse(getExpirationTime()).atDate(LocalDate.now()).toString(), formatter);
     }
 }

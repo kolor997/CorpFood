@@ -34,6 +34,8 @@
                                         <label><b>URL: </b></label>
                                         <br/>
                                         <input type="text" th:field="*{URL}" placeholder="url" name="url" required="required"/>
+                                        <br/>
+
                                         <div class="button">
                                             <button type="submit" class="addNew" id="button2">Add</button>
                                         </div>
@@ -41,22 +43,113 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="#"><img th:src="@{/img/list.png}" title="list"/></a></li>
-                        <li><a href="#"><img th:src="@{/img/money1.png}" title="money"/></a></li>
-                        <li><a href="#"><img th:src="@{/img/ban.png}" title="Business news"/></a>
+                        <li><a href="#"><img th:src="@{/img/list.png}" title="list"/></a>
+                            <ul class="second_floor animate" id="liveList">
+                                <div class="mainTable">
+                                    <table>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Order</th>
+                                            <th>Price</th>
+                                            <th>Restaurant</th>
+                                        </tr>
+                                        <div th:each="key : ${keys}">
+                                            <div th:each="val : ${activeResponses.get(key)}">
+                                                <tr>
+                                                    <td class="a"
+                                                        th:text="${val.user.firstName}+' '+${val.user.lastName}"></td>
+                                                    <td class="a" th:text="${val.yourOrder}"></td>
+                                                    <td class="a" th:text="${val.price}"></td>
+                                                    <td class="a" th:text="${key}"></td>
+                                                    <td class="buttonD">
+                                                        <form th:action="@{/deleteUserResponse/{id}(id=${val.id})}"
+                                                              th:object="${activeResponses}" method="post">
+                                                            <input type="hidden" th:field="${activeResponses}"/>
+                                                            <button type="submit"
+                                                                    value="Delete"
+                                                                    onClick="return confirm('Confirm delete?')"><img
+                                                                    src="../deleteButton.png"
+                                                                    th:src="@{/img/deleteButton.png}"/></button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </div>
+                                        </div>
+                                    </table>
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a href="#"><img th:src="@{/img/money1.png}" title="money"/></a>
+                            <ul class="second_floor animate" id="money">
+                                <div class="mainTable">
+                                <table>
+                                    <tr>
+                                    <th>Name</th>
+                                    <th>Debt</th>
+                                    </tr>
+                                    <tr th:each="user : ${users}">
+                                        <div th:if="${user.debt} > 0">
+                                        <td class="b" th:text="${user.firstName}+' '+${user.lastName}">
+                                        </td>
+                                        <td class="b" th:text="${user.debt}">q
+                                        </td>
+                                        <td class="buttonD">
+                                            <form th:action="@{/cancelDebt/{id}(id=${user.id})}" th:object="${users}" method="post">
+                                                <input type="hidden" th:field="${users}"/>
+                                                <button type="submit" value="Delete" onClick="return confirm('Confirm delete?')"><img th:src="@{/img/deleteButton.png}"/>
+                                                </button>
+                                            </form>
+                                        </td>
+                                        </div>
+                                        <div th:unless="${user.debt} <= 0">
+                                        </div>
+                                    </tr>
+                                </table>
+                                </div>
+                            </ul>
+                        </li>
+                        <li><a href="#"><img th:src="@{/img/ban.png}" title="Ban"/></a>
                             <ul class="second_floor animate" id="ban">
-                                <li>
-                                    <ul id="banList" th:each="users:${users}">
-                                        <li><input type="radio" class="order" name="radio" title="ban" th:text="' '+${users.firstName}+' '+${users.lastName}"/></li>
-                                    </ul>
-                                    <button id="banButton" type="submit">DELETE</button>
-                                </li>
+                                <table id="banList">
+                                    <tr th:each="user : ${users}">
+                                        <td class="b" th:text="${user.firstName}+' '+${user.lastName}">Admin nowak
+                                        </td>
+                                        <td class="buttonD">
+                                            <form th:action="@{/deleteUser/{id}(id=${user.id})}" th:object="${users}" method="post">
+                                                <input type="hidden" th:field="${users}"/>
+                                                <button type="submit" value="Delete" onClick="return confirm('Confirm delete?')"><img th:src="@{/img/deleteButton.png}"/>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
                             </ul>
                         </li>
                     </ul>
                 </div>
                 <div id="logoCont"><img th:src="@{/img/logoCF.png}" id="logo"/></div>
                 <div id="backButt"><a href="/welcome"><img th:src="@{/img/back.png}"/></a></div>
+
+                <div id="middleMenu">
+                    <form autocomplete="off" action="#" th:action="@{/adminPa}" th:object="${offer}" method="post"
+                          class="timeForm">
+
+                        <label>Set offer expiration</label>
+                        <br/>
+                        <input id="clock" type="time" th:field="*{expirationTime}" name="time" required="required"
+                               title="time"/>
+                        <button type="submit"><img th:src="@{/img/ok.png}"></button>
+
+                    </form>
+                    <div id="sendMail">
+                        <form>
+                            <button type="submit"><img th:src="@{/img/mail.png}"
+                                                       title="Send mail with orders"></button>
+                        </form>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </div>

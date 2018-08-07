@@ -8,39 +8,97 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Order</title>
 </head>
-<body onload="startTime()">
+<body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-
             <div id="loginHeader">
-                <p id="header" th:text="${userHeader}"></p>
+                <p id="header" th:text="${userHeader.firstName}+' '+${userHeader.lastName}"></p>
+            </div>
+            <div id="loginHeader2" th:each="active:${activeOffers}">
+                <p class="header2" th:text="${'Offer expires at: ' +active.expirationTime}" ></p>
+                <p class="header2" th:id="${'Time remaining: '+active.restaurant}"></p>
+                <script th:inline="javascript">
+                    //<![CDATA[
+
+                    var countDownDate = new Date(/*[[${active.duration}]]*/ 'default').getTime();
+
+                    var x = setInterval(function () {
+
+                        var now = new Date().getTime();
+
+                        var distance = countDownDate - now;
+
+                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                        document.getElementById(/*[[${active.restaurant}]]*/'default').innerHTML = hours + "h "
+                            + minutes + "m " + seconds + "s ";
+
+                        if (distance < 0) {
+                            clearInterval(x);
+                            document.getElementById(/*[[${active.restaurant}]]*/'default').innerHTML = "EXPIRED";
+                        }
+                    }, 1000);
+                    //]]>
+                </script>
             </div>
             <div class="container">
-                <div class="restaurantWindow">
-                    <h1>RESTAURANT 1</h1>
-                    <h1></h1>
-                    <p><a>MENU</a></p>
+                <div class="restaurantWindow" th:each="active:${activeOffers}">
+                    <h1 th:text="${active.restaurant}"></h1>
+                    <p th:text="${active.description}"></p>
+                    <p><a th:href="${active.URL}">MENU</a></p>
                 </div>
-                <div class="restaurantWindow1">
-                    <h1>RESTAURANT 2</h1>
-
-                    <p><a>MENU</a></p>
+                <button onclick="document.getElementById('id01').style.display='block'" id="orderBtn">Order</button>
+                <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin" title="Admin Page"/></a>
                 </div>
-                <button onclick="document.getElementById('id01').style.display='block'"
-                        id="orderBtn">Order
-                </button>
-                <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin"/></a></div>
-                <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/logout.png}" alt="Logout"/></a></div>
+                <div id="logout"><a href="/corpfood/logout"><img th:src="@{/img/logout.png}" alt="Logout"
+                                                                 title="Logout"/></a>
+                </div>
+                <div class="mainTable">
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Order</th>
+                            <th>Price</th>
+                            <th>Restaurant</th>
+                        </tr>
+                        <div th:each="key : ${keys}">
+                            <div th:each="val : ${activeResponses.get(key)}">
+                                <tr>
+                                    <td th:text="${val.user.firstName}+' '+${val.user.lastName}"></td>
+                                    <td th:text="${val.yourOrder}"></td>
+                                    <td th:text="${val.price}"></td>
+                                    <td th:text="${key}"></td>
+                                    <td class="buttonD">
+                                        <div th:if="${userHeader == val.user}">
+                                            <form th:action="@{/selfDeleteUserResponse/{id}(id=${val.id})}"
+                                                  th:object="${activeResponses}" method="post">
+                                                <input type="hidden" th:field="${activeResponses}"/>
+                                                <button class="deleteButton" type="submit" value="Delete"
+                                                        onClick="return confirm('Confirm delete?')"/>
+                                            </form>
+                                        </div>
+                                        <div th:unless="${userHeader != val.user}">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </div>
+                        </div>
+                    </table>
+                </div>
                 <div id="id01" class="modal">
                     <div class="container1 animate">
-                        <form autocomplete="off" action="#" th:action="@{/welcome}" th:object="${userR}" method="post" class="m-t" role="form" data-toggle="validator">
+                        <form autocomplete="off" action="#" th:action="@{/addUserResponse}" th:object="${userR}"
+                              method="post"
+                              class="m-t" role="form" data-toggle="validator">
                             <label><b>Order: </b></label>
                             <br/>
-                            <input type="radio" id="radio1" class="order" name="radio"/>
-                            <label for="radio1" class="radioLabel">RESTAURANT 1</label>
-                            <input type="radio" id="radio2" class="order" name="radio"/>
-                            <label for="radio2" class="radioLabel">RESTAURANT 2</label>
+                            <div th:each="offer : ${activeOffers}" class="radioB">
+                                <input type="radio" id="radio1" name="offerID"
+                                       th:value="${offer.getId()}"/>
+                                <label for="radio1" th:text="${offer.getRestaurant()}" class="order"> Rest 1</label>
+                            </div>
                             <br/>
                             <input type="text" th:field="*{yourOrder}" placeholder="Your order" name="order"/>
                             <br/>

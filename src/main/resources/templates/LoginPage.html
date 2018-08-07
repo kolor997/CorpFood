@@ -18,6 +18,11 @@
                     <img th:src="@{/img/avatar.png}" alt="Avatar" class="avatar" src="../static/img/avatar.png" />
                 </div>
                 <div class="container">
+                    <div th:if="${error12}">
+                        <div class="alert alert-danger">
+                            Invalid username or password.
+                        </div>
+                    </div>
                     <label><b>Login</b></label>
                     <br/>
                     <input type="text" placeholder="Username" name="username" required="required"/>

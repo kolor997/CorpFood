@@ -6,6 +6,7 @@ public class CreateUserResponseDTO {
 
     private String yourOrder;
     private BigDecimal price;
+    private Long offerID;
 
     public CreateUserResponseDTO() {
     }
@@ -24,5 +25,13 @@ public class CreateUserResponseDTO {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Long getOfferID() {
+        return offerID;
+    }
+
+    public void setOfferID(Long offerID) {
+        this.offerID = offerID;
     }
 }

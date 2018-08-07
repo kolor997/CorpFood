@@ -8,7 +8,9 @@ import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -40,12 +42,21 @@ public class OfferController {
 
     @PostMapping
     public OfferDTO create(@RequestBody CreateOfferDTO createOfferDTO) {
-//        Offer offer = offerService.createOffer(createOfferDTO);
         return new OfferDTO(offerService.createOffer(createOfferDTO));
     }
 
     @DeleteMapping("/{id}")
     public void deleteOffer(@PathVariable Long id) {
         offerService.deleteOffer(id);
+    }
+
+    @GetMapping("/")
+    public List<OfferDTO> findActive() {
+        List<OfferDTO> result = new ArrayList<>();
+
+        List<Offer> all = offerService.findActiveOffers();
+        all.forEach(b -> result.add(new OfferDTO(b)));
+
+        return result;
     }
 }

@@ -50,6 +50,7 @@ a {
 
 a:hover {
     text-decoration: none;
+    opacity: 0.8;
 }
 
 #upper_menu {
@@ -89,34 +90,44 @@ label {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
     padding: 5px 5px;
     z-index: 1;
-    overflow: auto;
 }
 
 #main_um li:hover .second_floor {
     display: block;
     width: 480px;
-    height: 435px;
+    height: auto;
     border-radius: 15px 15px;
 }
 
 #main_um li:hover #ban {
-    display: block;
-    width: 200px;
-    height: auto;
-    max-height: 500px;
-    border-radius: 15px 15px;
+     width: 200px;
+     height: auto;
+     max-height: 500px;
+     border-radius: 10px 10px;;
+     overflow: auto;
 }
 
-.second_floor li {
-    margin-bottom: 25px;
+#main_um li:hover #money {
+    width: auto;
+    height: auto;
+    max-height: 500px;
+    border-radius: 10px 10px;;
+    overflow: auto;
+}
 
+#main_um li:hover #liveList {
+    width: 480px;
+    height: auto;
+    max-height: 500px;
+    border-radius: 10px 10px;;
+    overflow: auto;
 }
 
 /*///////////////////////////////////////*/
 .animate {
     -webkit-animation: animatezoom 1s;
     animation: animatezoom 1s;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
 
 }
 
@@ -130,31 +141,6 @@ label {
 }
 
 /*/////////////////////////////*/
-#banList {
-    padding: 2px;
-    line-height:2px;
-}
-#banList li{
-    float: left;
-    clear: left;
-}
-#banButton{
-    background-color: crimson;
-    color: white;
-    padding: 14px 20px;
-    border: none;
-    cursor: pointer;
-    width: 150px;
-    margin-top: 15px;
-    margin-left: 7px;
-    border-radius: 4px;
-    outline: none;
-
-}
-#banList button:hover {
-    opacity: 0.8;
-}
-
 
 /*adding new restaurant*/
 input[type=text] {
@@ -167,7 +153,16 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-button {
+input[type=time] {
+    border: none;
+    background-color: #2ECC71;
+    border-radius: 15px;
+    padding: 12px 5px 12px 20px;
+    outline: none;
+
+}
+
+.button button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -196,6 +191,79 @@ button {
 #logo {
     position: static;
     width: 600px;
-    opacity: 0.5;
+    opacity: 0.3;
     transform: rotate(-25deg);
+}
+
+table {
+
+    margin: 3px;
+    width: 100%
+}
+
+.mainTable th {
+    max-width: 183px;
+    border-bottom: 3px ridge #aeaeae;
+    padding-left: 2px;
+    color: white;
+}
+
+.a {
+    border-bottom: 2px solid #bfaf24;
+}
+
+.mainTable td {
+    word-wrap: break-word;
+    max-width: 183px;
+    height: 50px;
+    padding-left: 8px;
+    color: white;
+}
+
+#banList td {
+    height: 50px;
+    color: white;
+}
+
+#banList .b {
+    border-bottom: 2px solid #e42c2f;
+}
+
+.buttonD button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+#middleMenu {
+    margin-top: -300px;
+}
+
+.timeForm {
+    font-size: 50px;
+    display: inline-block;
+
+}
+
+.timeForm button {
+    text-align: center;
+    alignment: center;
+    background-color: transparent;
+}
+
+#clock {
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+#sendMail {
+    margin-top: 304px;
+    margin-left: 693px;
+    position: relative
 }
