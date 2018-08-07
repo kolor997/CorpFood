@@ -1,9 +1,7 @@
 package CorpFood.mail;
 
 import CorpFood.model.service.OfferService;
-import CorpFood.model.service.UserResponseService;
 import CorpFood.model.service.impl.ContentServiceImpl;
-import CorpFood.model.service.impl.OfferServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -10,14 +10,12 @@ import CorpFood.model.repository.ContentRepository;
 import CorpFood.model.service.ContentService;
 import CorpFood.model.service.OfferService;
 import CorpFood.model.service.UserResponseService;
-import com.google.common.base.Functions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.toSet;
@@ -73,25 +71,6 @@ public class ContentServiceImpl implements ContentService {
                 .flatMap(o -> o.getUserResponses().stream())
                 .map(UserResponseDTO::new)
                 .collect(groupingBy(UserResponseDTO::getRestaurant, toSet()));
-
-//        listedOfferDTO.stream().forEachOrdered(o -> result.put(o, o.getUserResponses()));
-
-
-
-//        userResponses.forEach(b -> userResponseDTOS.add(new UserResponseDTO(b)));
-//        Set<OfferDTO> offerDTOS = new HashSet<>();
-//        Set<Offer> offers = offerService.findAll();
-//        offers.forEach(c -> offerDTOS.add(new OfferDTO(c)));
-//        for (OfferDTO offerDTO : offerDTOS) {
-//            Set<UserResponseDTO> temp = new HashSet<>();
-//            for (UserResponseDTO userResponseDTO : userResponseDTOS) {
-//                if (offerDTO.getId().equals(userResponseDTO.getOfferID())) { //warunek czas
-//                    temp.add(userResponseDTO);
-//                }
-//            }
-//            result.put(offerDTO, temp);
-//        }
-//        return result;
     }
 
     public Sort sortedBy() {

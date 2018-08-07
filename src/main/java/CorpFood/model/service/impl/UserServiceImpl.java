@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -50,5 +51,13 @@ public class UserServiceImpl implements UserService {
         user.setLogin(createUserDto.getLogin());
         user.setPassword(passwordEncoder.encode(createUserDto.getPassword()));
         return userRepository.save(user);
+    }
+
+    @Override
+    public User cancelDebt(Long id){
+        User user = userRepository.findOne(id);
+        user.setDebt(BigDecimal.valueOf(0.00));
+        userRepository.save(user);
+        return user;
     }
 }

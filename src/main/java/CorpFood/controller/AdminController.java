@@ -4,10 +4,7 @@ import CorpFood.model.dto.CreateOfferDTO;
 import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Offer;
 import CorpFood.model.repository.UserRepository;
-import CorpFood.model.service.ContentService;
-import CorpFood.model.service.OfferService;
-import CorpFood.model.service.UserResponseService;
-import CorpFood.model.service.UserService;
+import CorpFood.model.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -70,6 +67,12 @@ public class AdminController {
     public String deleteUser(@PathVariable Long id) {
         userResponseService.deleteUserResponsesByUserId(id);
         userService.deleteUser(id);
+        return "redirect:/adminPa";
+    }
+
+    @RequestMapping(value = "/cancelDebt/{id}", method = RequestMethod.POST)
+    public String cancelDebt(@PathVariable Long id) {
+        userService.cancelDebt(id);
         return "redirect:/adminPa";
     }
 

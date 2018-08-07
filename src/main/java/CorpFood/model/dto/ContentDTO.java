@@ -1,8 +1,7 @@
+
 package CorpFood.model.dto;
 
 import CorpFood.model.entity.Content;
-import CorpFood.model.entity.UserResponse;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -56,4 +55,3 @@ public class ContentDTO {
         isOfferOpen = offerOpen;
     }
 }
-

@@ -2,12 +2,8 @@ package CorpFood.controller;
 
 import CorpFood.model.dto.ContentDTO;
 import CorpFood.model.dto.CreateContentDTO;
-import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Content;
-import CorpFood.model.entity.UserResponse;
 import CorpFood.model.service.ContentService;
-import CorpFood.model.service.UserResponseService;
-import CorpFood.model.service.impl.ContentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

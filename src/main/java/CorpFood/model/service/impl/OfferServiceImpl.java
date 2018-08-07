@@ -7,10 +7,7 @@ import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -62,7 +59,7 @@ public class OfferServiceImpl implements OfferService {
                 .collect(Collectors.toList());
     }
 
-//    @Override
+    //    @Override
 //    public Map<Offer, Long> offerDuration(){
 //        Map<Offer, Long> offersDurations = new HashMap<>();
 //        LocalDate dateNow = LocalDate.now();

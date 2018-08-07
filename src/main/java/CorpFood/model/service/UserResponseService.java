@@ -1,7 +1,6 @@
 package CorpFood.model.service;
 
 import CorpFood.model.dto.CreateUserResponseDTO;
-import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.UserResponse;
 
 import java.util.List;

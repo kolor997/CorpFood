@@ -94,7 +94,7 @@
                                         <td class="b" th:text="${user.debt}">q
                                         </td>
                                         <td class="buttonD">
-                                            <form th:action="@{/deleteUser/{id}(id=${user.id})}" th:object="${users}" method="post">
+                                            <form th:action="@{/cancelDebt/{id}(id=${user.id})}" th:object="${users}" method="post">
                                                 <input type="hidden" th:field="${users}"/>
                                                 <button type="submit" value="Delete" onClick="return confirm('Confirm delete?')"><img th:src="@{/img/deleteButton.png}"/>
                                                 </button>
