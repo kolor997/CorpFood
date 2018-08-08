@@ -30,19 +30,19 @@ public class EmailController {
         this.offerService = offerService;
     }
 
-    @PutMapping("/send")
-    public String send() throws MessagingException {
-
-        Context context = new Context();
-        context.setVariable("header", "");
-        context.setVariable("title", "New CorpFood order is ready to go!");
-//        context.setVariable("responses", userResponseService.listAllUserResponses());
-        context.setVariable("descriptions", contentService.getAllFoodOrder());
-        context.setVariable("price", contentService.getAllPrices());
-
-        String body = templateEngine.process("mailTemplate", context);
-        emailSender.sendEmail("tt.olech@gmail.com", "CorpFood order is ready to go!", body);
-        return "index";
-    }
+//    @PutMapping("/send")
+//    public String send() throws MessagingException {
+//
+//        Context context = new Context();
+//        context.setVariable("header", "");
+//        context.setVariable("title", "New CorpFood order is ready to go!");
+////        context.setVariable("responses", userResponseService.listAllUserResponses());
+//        context.setVariable("descriptions", contentService.getAllFoodOrder());
+//        context.setVariable("price", contentService.getAllPrices());
+//
+//        String body = templateEngine.process("mailTemplate", context);
+//        emailSender.sendEmail("tt.olech@gmail.com", "CorpFood order is ready to go!", body);
+//        return "index";
+//    }
 
 }

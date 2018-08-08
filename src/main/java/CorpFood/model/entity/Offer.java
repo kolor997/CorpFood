@@ -1,7 +1,10 @@
 package CorpFood.model.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Entity
@@ -17,6 +20,7 @@ public class Offer {
     private LocalDateTime creationTime = LocalDateTime.now();
     private String expirationTime;
     private String duration;
+    private String email;
 
     @OneToMany(mappedBy = "offer")
     private Set<UserResponse> userResponses = new HashSet<>();
@@ -31,6 +35,7 @@ public class Offer {
         this.description = description;
         this.creationTime = getCreationTime();
         this.duration = getDuration();
+        this.email = email;
     }
 
     public Long getId() {
@@ -85,7 +90,16 @@ public class Offer {
         return duration;
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public void setDuration() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d, yyyy HH:mm:ss");
+        this.duration = String.format(LocalTime.parse(getExpirationTime()).atDate(LocalDate.now()).toString(), formatter);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

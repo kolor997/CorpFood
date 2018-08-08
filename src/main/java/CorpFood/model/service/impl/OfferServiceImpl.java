@@ -7,7 +7,10 @@ import CorpFood.model.service.OfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -45,8 +48,6 @@ public class OfferServiceImpl implements OfferService {
         offer.setRestaurant(createOfferDTO.getRestaurant());
         offer.setURL(createOfferDTO.getURL());
         offer.setDescription(createOfferDTO.getDescription());
-/*        offer.setExpirationTime(createOfferDTO.getExpirationTime());
-        offer.setDuration(createOfferDTO.getDuration());*/
         return offerRepository.save(offer);
     }
 
@@ -57,6 +58,20 @@ public class OfferServiceImpl implements OfferService {
         return activeOffers.stream()
                 .sorted(comparing(Offer::getCreationTime))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void setExpirationTime(String time){
+        List<Offer> activeOffers = findActiveOffers();
+
+        activeOffers
+                .forEach(o -> o.setExpirationTime(time));
+
+        activeOffers
+                .forEach(Offer::setDuration);
+
+
+        offerRepository.save(activeOffers);
     }
 
     //    @Override

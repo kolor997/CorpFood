@@ -4,6 +4,7 @@ import CorpFood.model.dto.CreateContentDTO;
 import CorpFood.model.dto.UserResponseDTO;
 import CorpFood.model.entity.Content;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,4 +19,6 @@ public interface ContentService {
     void deleteContent(Long id);
 
     Map<String, Set<UserResponseDTO>> getAllFoodOrder();
+
+    BigDecimal getAllPrices();
 }
