@@ -95,11 +95,14 @@ public class AdminController {
     public String send(@ModelAttribute(value = "offer") Offer offer) throws MessagingException {
 
         String emailAddress = offer.getEmail();
+        Map<String, Set<UserResponseDTO>> activeResponses = contentService.getAllFoodOrder();
 
         Context context = new Context();
         context.setVariable("header", "");
         context.setVariable("title", "New CorpFood orders are ready to go!");
-        context.setVariable("descriptions", contentService.getAllFoodOrder());
+        context.setVariable("keys", activeResponses.keySet());
+        context.setVariable("descriptions", activeResponses);
+        context.setVariable("activeOffers", offerService.findActiveOffers());
         context.setVariable("price", contentService.getAllPrices());
 
         String body = templateEngine.process("mailTemplate", context);
