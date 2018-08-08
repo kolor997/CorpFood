@@ -17,34 +17,34 @@
             </div>
             <div th:if="${activeOffers.isEmpty() == false}"></div>
             <div th:unless="${activeOffers.isEmpty() == true}">
-            <div id="loginHeader2">
-                <p class="header2" th:text="${'Offers expires at: ' +activeOffers.get(0).expirationTime}" ></p>
-                <p class="header2" th:id="${activeOffers.get(0).restaurant}"></p>
-                <script th:inline="javascript">
-                    //<![CDATA[
+                <div id="loginHeader2">
+                    <p class="header2" th:text="${'Offers expires at: ' +activeOffers.get(0).expirationTime}"></p>
+                    <p class="header2" th:id="${activeOffers.get(0).restaurant}"></p>
+                    <script th:inline="javascript">
+                        //<![CDATA[
 
-                    var countDownDate = new Date(/*[[${activeOffers.get(0).duration}]]*/ 'default').getTime();
+                        var countDownDate = new Date(/*[[${activeOffers.get(0).duration}]]*/ 'default').getTime();
 
-                    var x = setInterval(function () {
+                        var x = setInterval(function () {
 
-                        var now = new Date().getTime();
+                            var now = new Date().getTime();
 
-                        var distance = countDownDate - now;
+                            var distance = countDownDate - now;
 
-                        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                        document.getElementById(/*[[${activeOffers.get(0).restaurant}]]*/'default').innerHTML = hours + "h "
-                            + minutes + "m " + seconds + "s ";
+                            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                            document.getElementById(/*[[${activeOffers.get(0).restaurant}]]*/'default').innerHTML = hours + "h "
+                                + minutes + "m " + seconds + "s ";
 
-                        if (distance < 0) {
-                            clearInterval(x);
-                            document.getElementById(/*[[${activeOffers.get(0).restaurant}]]*/'default').innerHTML = "EXPIRED";
-                        }
-                    }, 1000);
-                    //]]>
-                </script>
-            </div>
+                            if (distance < 0) {
+                                clearInterval(x);
+                                document.getElementById(/*[[${activeOffers.get(0).restaurant}]]*/'default').innerHTML = "EXPIRED";
+                            }
+                        }, 1000);
+                        //]]>
+                    </script>
+                </div>
             </div>
             <div class="container">
                 <div class="restaurantWindow" th:each="active:${activeOffers}">
@@ -69,10 +69,10 @@
                         <div th:each="key : ${keys}">
                             <div th:each="val : ${activeResponses.get(key)}">
                                 <tr>
-                                    <td th:text="${val.user.firstName}+' '+${val.user.lastName}"></td>
-                                    <td th:text="${val.yourOrder}"></td>
-                                    <td th:text="${val.price}"></td>
-                                    <td th:text="${key}"></td>
+                                    <td class="abc" th:text="${val.user.firstName}+' '+${val.user.lastName}"></td>
+                                    <td class="abc" th:text="${val.yourOrder}"></td>
+                                    <td class="abc" th:text="${val.price}"></td>
+                                    <td class="abc" th:text="${key}"></td>
                                     <td class="buttonD">
                                         <div th:if="${userHeader == val.user}">
                                             <form th:action="@{/selfDeleteUserResponse/{id}(id=${val.id})}"
