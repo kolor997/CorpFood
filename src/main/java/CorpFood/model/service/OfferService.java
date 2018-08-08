@@ -17,5 +17,7 @@ public interface OfferService {
     Offer createOffer(CreateOfferDTO createOfferDTO);
 
     List<Offer> findActiveOffers();
+
+    void setExpirationTime(String time);
 //    Map<Offer, Long> offerDuration();
 }

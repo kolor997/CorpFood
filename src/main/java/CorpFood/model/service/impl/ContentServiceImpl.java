@@ -81,6 +81,7 @@ public class ContentServiceImpl implements ContentService {
         return true;
     }
 
+    @Override
     public BigDecimal getAllPrices() {
 
         Set<BigDecimal> temp = new HashSet<>();

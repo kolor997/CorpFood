@@ -131,20 +131,22 @@
                 <div id="backButt"><a href="/welcome"><img th:src="@{/img/back.png}"/></a></div>
 
                 <div id="middleMenu">
-                    <form autocomplete="off" action="#" th:action="@{/adminPa}" th:object="${offer}" method="post"
+                    <form autocomplete="off" action="#" th:action="@{/setExpirationTime}" th:object="${offer}" method="post"
                           class="timeForm">
 
-                        <label>Set offer expiration</label>
-                        <br/>
+                        <h2>Set offer expiration time:</h2>
                         <input id="clock" type="time" th:field="*{expirationTime}" name="time" required="required"
                                title="time"/>
                         <button type="submit"><img th:src="@{/img/ok.png}"></button>
 
                     </form>
                     <div id="sendMail">
-                        <form>
-                            <button type="submit"><img th:src="@{/img/mail.png}"
-                                                       title="Send mail with orders"></button>
+                        <form autocomplete="off" action="#" th:action="@{/sendSummaryEmail}" th:object="${offer}" method="post">
+                            <h2>Send summary email to:</h2>
+                            <table>
+                                <td id="mailBoxWidthRegulation"><input id="emailBox" type="text" th:field="*{email}" placeholder="Email" name="email" required="required"/></td>
+                                <td><button type="submit"><img th:src="@{/img/mail.png}" title="Send mail with orders"></button></td>
+                            </table>
                         </form>
                     </div>
                 </div>

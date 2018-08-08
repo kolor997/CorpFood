@@ -16,6 +16,7 @@ public class OfferDTO {
     private String expirationTime;
     private Set<UserResponse> userResponses;
     private String duration;
+    private String email;
 
     public OfferDTO(Offer offer) {
         this.id = offer.getId();
@@ -26,6 +27,7 @@ public class OfferDTO {
         this.expirationTime = offer.getExpirationTime();
         this.userResponses = offer.getUserResponses();
         this.duration = offer.getDuration();
+        this.email = offer.getEmail();
     }
 
     public Long getId() {
@@ -82,5 +84,13 @@ public class OfferDTO {
 
     public String getDuration() {
         return duration;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
