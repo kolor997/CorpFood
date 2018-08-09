@@ -18,9 +18,10 @@
                 <div id="upper_menu">
                     <ul id="main_um">
                         <li><a href="#"><img th:src="@{/img/add.png}" title="add new offer"/> </a>
+                            <div th:if="not ${activeOffers.size() == 2}">
                             <ul class="second_floor animate">
                                 <li>
-                                    <form autocomplete="off" action="#" th:action="@{/adminPa}" th:object="${offer}" method="post">
+                                    <form autocomplete="off" action="#" th:action="@{/addOffer}" th:object="${offer}" method="post">
                                         <label><b>Restaurant: </b></label>
                                         <br/>
                                         <input type="text" th:field="*{restaurant}" placeholder="Restaurant" name="restaurant" required="required"/>
@@ -42,6 +43,14 @@
                                     </form>
                                 </li>
                             </ul>
+                            </div>
+                            <div th:if="${activeOffers.size() == 2}">
+                                <ul class="second_floor animate">
+                                    <li>
+                                        <h2>ONLY 2 OFFERS CAN BE ACTIVE AT A TIME!</h2>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li><a href="#"><img th:src="@{/img/list.png}" title="list"/></a>
                             <ul class="second_floor animate" id="liveList">

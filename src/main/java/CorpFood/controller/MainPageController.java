@@ -73,4 +73,11 @@ public class MainPageController {
         return "redirect:/welcome";
     }
 
+    @RequestMapping(value = "/deleteOffer/{id}", method = RequestMethod.POST)
+    public String deleteOffer(@PathVariable Long id) {
+        userResponseService.deleteUserResponsesByOfferId(id);
+        offerService.deleteOffer(id);
+        return "redirect:/welcome";
+    }
+
 }

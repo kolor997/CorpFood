@@ -56,14 +56,14 @@ public class AdminController {
         return model;
     }
 
-    @RequestMapping(value ="/adminPa", method = RequestMethod.POST)
-    public ModelAndView newOffer(@Valid CreateOfferDTO offer){
+    @RequestMapping(value ="/addOffer", method = RequestMethod.POST)
+    public String newOffer(@Valid CreateOfferDTO offer){
         ModelAndView modelAndView = new ModelAndView();
         offerService.createOffer(offer);
         modelAndView.addObject("users", userRepository.findAll());
         modelAndView.addObject("offer", new Offer());
         modelAndView.setViewName("AdminPage");
-        return modelAndView;
+        return "redirect:/adminPa";
     }
 
     @RequestMapping(value = "/deleteUserResponse/{id}", method = RequestMethod.POST)

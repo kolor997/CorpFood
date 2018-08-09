@@ -349,6 +349,22 @@ table{
     padding-bottom: 1%;
 }
 
+.offerD button {
+    background-color: transparent;
+    background-image: url('../img/deleteButton.png');
+    background-size: contain;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-top: auto;
+    margin-left: 0%;
+    margin-bottom: auto;
+    padding-right: 5%;
+    padding-bottom: 1%;
+}
+
+.a {
 .abc {
     border-bottom: 2px solid #bfaf24;
 }

@@ -51,6 +51,14 @@
                     <h1 th:text="${active.restaurant}"></h1>
                     <p th:text="${active.description}"></p>
                     <p><a th:href="${active.URL}">MENU</a></p>
+                    <div th:if="${userHeader.role.equals('ADMIN')}" class="offerD">
+                        <form th:action="@{/deleteOffer/{id}(id=${active.id})}"
+                              th:object="${activeResponses}" method="post">
+                            <input type="hidden" th:field="${activeResponses}"/>
+                            <button type="submit" value="Delete"
+                                    onClick="return confirm('Confirm delete?')"/>
+                        </form>
+                    </div>
                 </div>
                 <button onclick="document.getElementById('id01').style.display='block'" id="orderBtn">Order</button>
                 <div id="admin"><a href="/adminPa"><img th:src="@{/img/admin.png}" alt="Admin" title="Admin Page"/></a>
