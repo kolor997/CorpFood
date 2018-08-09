@@ -22,21 +22,15 @@
                     <p class="header2" th:id="${activeOffers.get(0).restaurant}"></p>
                     <script th:inline="javascript">
                         //<![CDATA[
-
                         var countDownDate = new Date(/*[[${activeOffers.get(0).duration}]]*/ 'default').getTime();
-
                         var x = setInterval(function () {
-
                             var now = new Date().getTime();
-
                             var distance = countDownDate - now;
-
                             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                             document.getElementById(/*[[${activeOffers.get(0).restaurant}]]*/'default').innerHTML = hours + "h "
                                 + minutes + "m " + seconds + "s ";
-
                             if (distance < 0) {
                                 clearInterval(x);
                                 document.getElementById(/*[[${activeOffers.get(0).restaurant}]]*/'default').innerHTML = "EXPIRED";
@@ -56,7 +50,7 @@
                               th:object="${activeResponses}" method="post">
                             <input type="hidden" th:field="${activeResponses}"/>
                             <button type="submit" value="Delete"
-                                    onClick="return confirm('Confirm delete?')"/>
+                                    onClick="return confirm('Confirm delete?')"></button>
                         </form>
                     </div>
                 </div>

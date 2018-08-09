@@ -99,6 +99,27 @@ label {
     border-radius: 15px 15px;
 }
 
+.second_floor_info{
+    margin-top: 145px;
+    display: none;
+    position: absolute;
+    color: #fff4fb;
+    font-family:"Fira Code",serif;
+    text-align: center;
+
+    background-color: rgba(152, 0, 18, 0.98);
+    box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.8);
+    padding: 5px 5px;
+    z-index: 1;
+}
+
+#main_um li:hover .second_floor_info{
+    display: block;
+    width: 480px;
+    height: auto;
+    border-radius: 15px 15px;
+}
+
 #main_um li:hover #ban {
      width: 200px;
      height: auto;

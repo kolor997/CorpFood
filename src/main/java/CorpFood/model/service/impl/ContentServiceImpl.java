@@ -85,11 +85,14 @@ public class ContentServiceImpl implements ContentService {
     public BigDecimal getAllPrices() {
 
         Set<BigDecimal> temp = new HashSet<>();
+        Set<UserResponse> all;
 
-        Set<UserResponse> all = userResponseService.findAll();
+        List<Offer> listedOffers = offerService.findActiveOffers();
 
-        all.forEach(p -> temp.add(p.getPrice()));
-
+        for (Offer o : listedOffers) {
+            all = new HashSet<>(o.getUserResponses());
+            all.forEach(p -> temp.add(p.getPrice()));
+        }
         return temp.stream()
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
