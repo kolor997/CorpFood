@@ -161,33 +161,7 @@
         }
 
         .btn a {
-            background-color: #ffffff;
-            border: solid 1px #3498db;
-            border-radius: 5px;
-            box-sizing: border-box;
-            color: white;
-            cursor: pointer;
-            display: inline-block;
-            font-size: 14px;
-            font-weight: bold;
-            margin: 0;
-            padding: 12px 25px;
-            text-decoration: none;
-            text-transform: capitalize;
-        }
 
-        .btn-primary table td {
-            background-color: #3498db;
-        }
-
-        .btn-primary a {
-            background-color: #3498db;
-            border-color: #3498db;
-            color: #ffffff;
-        }
-
-        .powered-by a {
-            text-decoration: none;
         }
 
         hr {
@@ -241,11 +215,6 @@
             background-color: #34495e !important;
         }
 
-        .btn-primary a:hover {
-            background-color: #34495e !important;
-            border-color: #34495e !important;
-        }
-
         .mainTable th {
             font-family: "Eras Medium ITC", serif;
             border-bottom: 3px ridge #aeaeae;
@@ -260,14 +229,38 @@
         }
 
         #sum {
+
             font-weight: bolder;
             text-align: center;
-
             opacity: 0.98;
         }
 
         #sum p {
+            alignment: right;
             border-bottom: 2px solid #897e1a;
+        }
+
+        .buttonBack {
+            background-color: #225a86;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            box-sizing: border-box;
+
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+            padding: 12px 25px;
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+        .buttonBack a {
+            color: white;
+        }
+        .buttonBack:hover {
+            background-color: #34495e !important;
+            border-color: #34495e !important;
         }
 
     </style>
@@ -282,7 +275,8 @@
                         <td class="wrapper">
                             <table class="mainTable" border="0" cellpadding="0" cellspacing="0">
                                 <div th:each="offer:${descriptions}">
-                                        <h3 th:text="${'OFFER: '+offer.key}"></h3>
+                                    <br/>
+                                    <h3 th:text="${'OFFER: '+offer.key}"></h3>
                                     <tr>
                                         <th>USER</th>
                                         <th>ORDER</th>
@@ -293,30 +287,36 @@
                                             <tr>
                                                 <td class="abc" style="border-left:2px solid #bfaf24; "
                                                     th:text="${response.user.firstName+' '+response.user.lastName}"></td>
-                                                <td class="abc" th:text="${response.yourOrder+' || '+ response.restaurant}">
+                                                <td class="abc"
+                                                    th:text="${response.yourOrder+' || '+ response.restaurant}">
                                                 </td>
                                                 <td class="abc" th:text="${response.price}"></td>
                                             </tr>
                                         </div>
                                     </div>
                                 </div>
-                                <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
+                                <table border="0" cellpadding="0" cellspacing="0">
                                     <tbody>
                                     <tr>
-                                        <td align="left">
+                                        <td align="right">
                                             <table border="0" cellpadding="0" cellspacing="0">
-                                                <tbody>
                                                 <tr>
-                                                    <td><a href="http://localhost:8080/welcome" target="_blank">Go back
-                                                        to CorpFood</a></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td id="sum"><br>TOTAL PRICE: <p th:text="${price+' zł'}"></td>
                                                 </tr>
-                                                </tbody>
                                             </table>
                                         </td>
-                                        <td id="sum" align="right"><br>TOTAL PRICE: <p th:text="${price+' zł'}"></td>
-
                                     </tr>
                                     </tbody>
+                                    <tbody>
+                                    <tr>
+                                        <td class="buttonBack"><a href="http://localhost:8080/welcome" target="_blank" >Go
+                                            back
+                                            to CorpFood</a></td>
+                                    </tr>
+                                    </tbody>
+
                                 </table>
                             </table>
                         </td>

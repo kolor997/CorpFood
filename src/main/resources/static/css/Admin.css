@@ -173,14 +173,22 @@ input[type=text] {
     border-radius: 4px;
     box-sizing: border-box;
 }
-
 input[type=time] {
     border: none;
     background-color: #2ECC71;
     border-radius: 15px;
     padding: 12px 5px 12px 20px;
     outline: none;
+}
 
+input[type=email]{
+    padding: 12px 5px;
+    margin: 5px 0px;
+    display: inline-block;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+    box-sizing: border-box;
+    outline: none;
 }
 
 .button button {
@@ -289,7 +297,7 @@ button {
 }
 
 #emailBox{
-    width: 250px;
+    width: 255px;
 }
 
 #mailBoxWidthRegulation{

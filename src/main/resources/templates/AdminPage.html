@@ -153,7 +153,7 @@
                         <form autocomplete="off" action="#" th:action="@{/sendSummaryEmail}" th:object="${offer}" method="post">
                             <h2>Send summary email to:</h2>
                             <table>
-                                <td id="mailBoxWidthRegulation"><input id="emailBox" type="text" th:field="*{email}" placeholder="Email" name="email" required="required"/></td>
+                                <td id="mailBoxWidthRegulation"><input id="emailBox" type="email" th:field="*{email}" placeholder="For your own safety use GMAIL" name="email" required="required"/></td>
                                 <td><button type="submit"><img th:src="@{/img/mail.png}" title="Send mail with orders"></button></td>
                             </table>
                         </form>
