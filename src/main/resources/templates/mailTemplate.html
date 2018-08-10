@@ -1,103 +1,346 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Simple Transactional Email</title>
     <style>
 
+        img {
+            border: none;
+            -ms-interpolation-mode: bicubic;
+            max-width: 100%;
+        }
+
         body {
-            font-family: "Eras Medium ITC", serif;
-            font-size: 17px;
-        }
-
-        .mainContainer {
-            padding: 30px;
-            background-color: #9c9a9a;
-        }
-
-        #innerOrder {
-            margin-right: auto;
-            margin-left: auto;
-            padding: 4px;
-            position: center;
-            border: 3px solid #4CAF50;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            opacity: 0.98;
-            width: 800px;
-            height: auto;
-        }
-
-        th {
-            border-bottom: 2px #4CAF50 solid;;
-        }
-
-        #sum {
-            font-weight: bolder;
-            font-size: 20px;
-            margin-top: 55px;
-            padding: 10px;
-            margin-left: 60%;
-            position: center;
-            border: 3px solid #4CAF50;
-            border-radius: 5px;
-            background-color: #f1f9ea;
-            opacity: 0.98;
-            width: 150px;
-            height: 25px;
-        }
-
-        h1 {
-            margin-left: 45%;
-        }
-
-        h4 {
-            width: 240px;
-            border-bottom: 2px #2b642e solid;
-            font-weight: bolder;
+            background-color: #f6f6f6;
+            font-family: sans-serif;
+            -webkit-font-smoothing: antialiased;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+            padding: 0;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
         }
 
         table {
-            width: 98%
+            border-collapse: separate;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+            width: 100%;
         }
+
+        table td {
+            font-family: sans-serif;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        /* -------------------------------------
+            BODY & CONTAINER
+        ------------------------------------- */
+        .body {
+            background-color: #f6f6f6;
+            width: 100%;
+        }
+
+        /* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
+        .container {
+            display: block;
+            Margin: 0 auto !important;
+            /* makes it centered */
+            max-width: 580px;
+            padding: 10px;
+            width: 580px;
+        }
+
+        /* This should also be a block element, so that it will fill 100% of the .container */
+        .content {
+            box-sizing: border-box;
+            display: block;
+            Margin: 0 auto;
+            max-width: 580px;
+            padding: 10px;
+        }
+
+        /* -------------------------------------
+            HEADER, FOOTER, MAIN
+        ------------------------------------- */
+        .main {
+            background: #ffffff;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        .content-block {
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .footer {
+            clear: both;
+            Margin-top: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer td,
+        .footer p,
+        .footer span,
+        .footer a {
+            color: #999999;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #000000;
+            font-family: "Eras Medium ITC", serif;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0 0 30px;
+        }
+
+        h1 {
+            font-size: 35px;
+            font-weight: 300;
+            text-align: center;
+            text-transform: capitalize;
+        }
+
+        p,
+        ul,
+        ol {
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 0 0 15px;
+        }
+
+        p li,
+        ul li,
+        ol li {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        a {
+            color: #fffafe;
+            text-decoration: none;
+        }
+
+        /* -------------------------------------
+            BUTTONS
+        ------------------------------------- */
+        .btn {
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        .btn > tbody > tr > td {
+            padding-bottom: 15px;
+        }
+
+        .btn table {
+            width: auto;
+        }
+
+        .btn table td {
+            background-color: #ffffff;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .btn a {
+
+        }
+
+        hr {
+            border: 0;
+            border-bottom: 1px solid #f6f6f6;
+            Margin: 20px 0;
+        }
+
+        @media only screen and (max-width: 620px) {
+            table[class=body] h1 {
+                font-size: 28px !important;
+                margin-bottom: 10px !important;
+            }
+
+            table[class=body] p,
+            table[class=body] ul,
+            table[class=body] ol,
+            table[class=body] td,
+            table[class=body] span,
+            table[class=body] a {
+                font-size: 16px !important;
+            }
+
+            table[class=body] .wrapper,
+            table[class=body] .content {
+                padding: 0 !important;
+            }
+
+            table[class=body] .container {
+                padding: 0 !important;
+                width: 100% !important;
+            }
+
+            table[class=body] .main {
+                border-left-width: 0 !important;
+                border-radius: 0 !important;
+                border-right-width: 0 !important;
+            }
+
+            table[class=body] .btn table {
+                width: 100% !important;
+            }
+
+            table[class=body] .btn a {
+                width: 100% !important;
+            }
+
+        }
+
+        .btn-primary table td:hover {
+            background-color: #34495e !important;
+        }
+
+        .mainTable th {
+            font-family: "Eras Medium ITC", serif;
+            border-bottom: 3px ridge #aeaeae;
+            padding-left: 2px;
+
+        }
+
+        .abc {
+            padding-left: 2px;
+            border-right: 2px solid #897e1a;
+            border-bottom: 2px solid #897e1a;
+        }
+
+        #sum {
+
+            font-weight: bolder;
+            text-align: center;
+            opacity: 0.98;
+        }
+
+        #sum p {
+            alignment: right;
+            border-bottom: 2px solid #897e1a;
+        }
+
+        .buttonBack {
+            background-color: #225a86;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            box-sizing: border-box;
+
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+            padding: 12px 25px;
+            text-decoration: none;
+            text-transform: capitalize;
+        }
+        .buttonBack a {
+            color: white;
+        }
+        .buttonBack:hover {
+            background-color: #34495e !important;
+            border-color: #34495e !important;
+        }
+
     </style>
 </head>
 <body>
-<div class="col-sm-12 mainContainer">
+<table border="0" cellpadding="0" cellspacing="0" class="body">
+    <tr>
+        <td class="container">
+            <div class="content">
+                <table class="main">
+                    <tr>
+                        <td class="wrapper">
+                            <table class="mainTable" border="0" cellpadding="0" cellspacing="0">
+                                <div th:each="offer:${descriptions}">
+                                    <br/>
+                                    <h3 th:text="${'OFFER: '+offer.key}"></h3>
+                                    <tr>
+                                        <th>USER</th>
+                                        <th>ORDER</th>
+                                        <th>PRICE</th>
+                                    </tr>
+                                    <div th:each="description:${descriptions.get(offer.key)}">
+                                        <div th:each="response:${description}">
+                                            <tr>
+                                                <td class="abc" style="border-left:2px solid #bfaf24; "
+                                                    th:text="${response.user.firstName+' '+response.user.lastName}"></td>
+                                                <td class="abc"
+                                                    th:text="${response.yourOrder+' || '+ response.restaurant}">
+                                                </td>
+                                                <td class="abc" th:text="${response.price}"></td>
+                                            </tr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table border="0" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                    <tr>
+                                        <td align="right">
+                                            <table border="0" cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td id="sum"><br>TOTAL PRICE: <p th:text="${price+' zł'}"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    <tbody>
+                                    <tr>
+                                        <td class="buttonBack"><a href="http://localhost:8080/welcome" target="_blank" >Go
+                                            back
+                                            to CorpFood</a></td>
+                                    </tr>
+                                    </tbody>
 
-    <div id="innerOrder">
-        <table>
-            <div>
-            <tr>
-                <td><h1 th:text="${title}"></h1></td>
-            </tr>
-            </div>
-                <tr th:each="offer : ${descriptions}">
-                    <h4>OFFER: <p  th:text="${offer.key}"></p></h4>
-                </tr>
-                <tr>
-                    <th>USER</th>
-                    <th>ORDER</th>
-                    <th>PRICE</th>
-                </tr>
-                <div th:each="description : ${descriptions.values()}">
-                    <div th:each = "response : ${description}">
+                                </table>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <div class="footer">
+                    <table border="0" cellpadding="0" cellspacing="0">
                         <tr>
-                        <td th:text="${response.user.firstName+' '+response.user.lastName}"></td>
-                        <td th:text="${response.yourOrder}"></td>
-                        <td th:text="${response.price}"></td>
+                            <td class="content-block">
+                                <span>Software Development Academy, Java8Wro</span>
+                                <br>Checkout our project on <a href="https://github.com/kolor997/CorpFood"
+                                                               style="color: #999999">GitHub</a>.
+                            </td>
                         </tr>
-                    </div>
+                        <tr>
+                            <td>CorpFood Inc.®
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td id="sum">TOTAL PRICE: <p  th:text="${price}"> zł</td>
-                </tr>
-        </table>
-    </div>
-</div>
+            </div>
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
 </body>
 </html>

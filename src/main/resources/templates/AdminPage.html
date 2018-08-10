@@ -18,9 +18,10 @@
                 <div id="upper_menu">
                     <ul id="main_um">
                         <li><a href="#"><img th:src="@{/img/add.png}" title="add new offer"/> </a>
+                            <div th:if="not ${activeOffers.size() == 2}">
                             <ul class="second_floor animate">
                                 <li>
-                                    <form autocomplete="off" action="#" th:action="@{/adminPa}" th:object="${offer}" method="post">
+                                    <form autocomplete="off" action="#" th:action="@{/addOffer}" th:object="${offer}" method="post">
                                         <label><b>Restaurant: </b></label>
                                         <br/>
                                         <input type="text" th:field="*{restaurant}" placeholder="Restaurant" name="restaurant" required="required"/>
@@ -42,6 +43,14 @@
                                     </form>
                                 </li>
                             </ul>
+                            </div>
+                            <div th:if="${activeOffers.size() == 2}">
+                                <ul class="second_floor_info animate">
+                                    <li>
+                                        <h2>ONLY 2 OFFERS CAN BE ACTIVE AT THE SAME TIME</h2>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li><a href="#"><img th:src="@{/img/list.png}" title="list"/></a>
                             <ul class="second_floor animate" id="liveList">
@@ -144,7 +153,7 @@
                         <form autocomplete="off" action="#" th:action="@{/sendSummaryEmail}" th:object="${offer}" method="post">
                             <h2>Send summary email to:</h2>
                             <table>
-                                <td id="mailBoxWidthRegulation"><input id="emailBox" type="text" th:field="*{email}" placeholder="Email" name="email" required="required"/></td>
+                                <td id="mailBoxWidthRegulation"><input id="emailBox" type="email" th:field="*{email}" placeholder="For your own safety use GMAIL" name="email" required="required"/></td>
                                 <td><button type="submit"><img th:src="@{/img/mail.png}" title="Send mail with orders"></button></td>
                             </table>
                         </form>

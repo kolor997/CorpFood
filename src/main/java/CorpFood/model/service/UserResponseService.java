@@ -18,6 +18,8 @@ public interface UserResponseService {
 
     void deleteUserResponsesByUserId(Long id);
 
+    void deleteUserResponsesByOfferId(Long userId);
+
     List<UserResponse> listAllUserResponses();
 
 

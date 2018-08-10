@@ -5,7 +5,7 @@ import CorpFood.model.entity.UserResponse;
 
 import java.math.BigDecimal;
 
-public class UserResponseDTO {
+public class    UserResponseDTO {
 
     private Long id;
     private User user;

@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface UserResponseRepository extends JpaRepository<UserResponse,Long> {
     List<UserResponse> findUserResponsesByUser_Id(Long id);
+    List<UserResponse> findUserResponsesByOffer_Id(Long id);
 }

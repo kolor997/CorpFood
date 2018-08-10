@@ -84,9 +84,13 @@ public class ContentServiceImpl implements ContentService {
     @Override
     public BigDecimal getAllPrices() {
 
-        Set<BigDecimal> temp = new HashSet<>();
+        List<BigDecimal> temp = new ArrayList<>();
+        Set<UserResponse> all = new HashSet<>();
 
-        Set<UserResponse> all = userResponseService.findAll();
+        List<Offer> listedOffers = offerService.findActiveOffers();
+
+        listedOffers.stream()
+                .forEach(o ->all.addAll(o.getUserResponses()));
 
         all.forEach(p -> temp.add(p.getPrice()));
 
