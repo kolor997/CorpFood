@@ -282,16 +282,13 @@
                         <td class="wrapper">
                             <table class="mainTable" border="0" cellpadding="0" cellspacing="0">
                                 <div th:each="offer:${descriptions}">
-                                    <tr>
-                                    <tr>
                                         <h3 th:text="${'OFFER: '+offer.key}"></h3>
-                                    </tr>
                                     <tr>
                                         <th>USER</th>
                                         <th>ORDER</th>
                                         <th>PRICE</th>
                                     </tr>
-                                    <div th:each="description:${descriptions.values()}">
+                                    <div th:each="description:${descriptions.get(offer.key)}">
                                         <div th:each="response:${description}">
                                             <tr>
                                                 <td class="abc" style="border-left:2px solid #bfaf24; "
@@ -302,13 +299,7 @@
                                             </tr>
                                         </div>
                                     </div>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td id="sum"><br>TOTAL PRICE: <p th:text="${price+' zł'}"></td>
-                                    </tr>
                                 </div>
-                                </tr>
                                 <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                     <tbody>
                                     <tr>
@@ -322,6 +313,8 @@
                                                 </tbody>
                                             </table>
                                         </td>
+                                        <td id="sum" align="right"><br>TOTAL PRICE: <p th:text="${price+' zł'}"></td>
+
                                     </tr>
                                     </tbody>
                                 </table>
@@ -339,7 +332,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>CorpFood®.
+                            <td>CorpFood Inc.®
                             </td>
                         </tr>
                     </table>

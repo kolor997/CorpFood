@@ -1,5 +1,6 @@
 package CorpFood.model.entity;
 
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
